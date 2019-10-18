@@ -27,9 +27,9 @@ public class CuttingRope {
     }
 
     public static void main(String[] args) {
-        //System.out.println(maxProductAfterCutting(1) == 0);
-        //System.out.println(maxProductAfterCutting(2) == 1);
-        //System.out.println(maxProductAfterCutting(3) == 2);
+        System.out.println(maxProductAfterCutting(1) == 0);
+        System.out.println(maxProductAfterCutting(2) == 1);
+        System.out.println(maxProductAfterCutting(3) == 2);
         System.out.println(maxProductAfterCutting(4));
         System.out.println(maxProductAfterCutting(5));
         System.out.println(maxProductAfterCutting(6));
