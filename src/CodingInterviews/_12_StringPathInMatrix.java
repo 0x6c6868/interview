@@ -1,6 +1,6 @@
-package CodingInterviews.ch02;
+package CodingInterviews;
 
-public class StringPathInMatrix {
+public class _12_StringPathInMatrix {
 
     static boolean hasPath(char[] matrix, int rows, int cols, char[] str) {
 

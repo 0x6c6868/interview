@@ -1,6 +1,6 @@
-package CodingInterviews.ch02;
+package CodingInterviews;
 
-public class ReplaceSpaces {
+public class _05_1_ReplaceSpaces {
 
     static String replaceSpace(StringBuffer str) {
         if (str == null || str.length() < 0) return str.toString();

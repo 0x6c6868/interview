@@ -1,6 +1,6 @@
-package CodingInterviews.ch02;
+package CodingInterviews;
 
-public class FindInPartiallySortedMatrix {
+public class _04_FindInPartiallySortedMatrix {
 
     static boolean find(int[][] array, int target) {
         if (array == null) return false;

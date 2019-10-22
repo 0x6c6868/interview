@@ -1,6 +1,6 @@
-package CodingInterviews.ch02;
+package CodingInterviews;
 
-public class CuttingRope {
+public class _14_CuttingRope {
 
     static int maxProductAfterCutting(int length) {
         if (length < 2) return 0;

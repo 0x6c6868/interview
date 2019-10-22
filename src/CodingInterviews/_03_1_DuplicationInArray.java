@@ -1,6 +1,6 @@
-package CodingInterviews.ch02;
+package CodingInterviews;
 
-public class DuplicationInArray {
+public class _03_1_DuplicationInArray {
 
     static int duplicate(int[] numbers) {
 

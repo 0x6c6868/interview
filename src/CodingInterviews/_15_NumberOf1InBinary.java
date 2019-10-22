@@ -1,6 +1,6 @@
-package CodingInterviews.ch02;
+package CodingInterviews;
 
-public class NumberOf1InBinary {
+public class _15_NumberOf1InBinary {
 
     static int NumberOf1(int n) {
         int count = 0;

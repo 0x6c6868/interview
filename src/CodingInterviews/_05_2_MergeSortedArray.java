@@ -1,6 +1,6 @@
-package CodingInterviews.ch02;
+package CodingInterviews;
 
-public class MergeSortedArray {
+public class _05_2_MergeSortedArray {
 
     static void merge(int[] a1, int[] a2) {
         int p1 = a1.length - 1;

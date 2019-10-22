@@ -1,11 +1,11 @@
-package CodingInterviews.ch02;
+package CodingInterviews;
 
 import CodingInterviews.util.ListNode;
 
 import java.util.ArrayList;
 import java.util.Stack;
 
-public class PrintListInReversedOrder {
+public class _06_PrintListInReversedOrder {
 
     static ArrayList<Integer> printListFromTailToHead(ListNode listNode) {
         Stack<Integer> stack = new Stack();

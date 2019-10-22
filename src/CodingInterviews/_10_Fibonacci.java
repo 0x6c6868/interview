@@ -1,6 +1,6 @@
-package CodingInterviews.ch02;
+package CodingInterviews;
 
-public class Fibonacci {
+public class _10_Fibonacci {
     public int fibonacci(int n) {
         if (n <= 0) {
             return 0;

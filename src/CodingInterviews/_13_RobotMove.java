@@ -1,6 +1,6 @@
-package CodingInterviews.ch02;
+package CodingInterviews;
 
-public class RobotMove {
+public class _13_RobotMove {
     static int movingCount(int threshold, int rows, int cols) {
         if (rows <= 0 || cols <= 0) return 0;
 

@@ -1,6 +1,6 @@
-package CodingInterviews.ch03;
+package CodingInterviews;
 
-public class Power {
+public class _16_Power {
     public double Power(double base, int exponent) {
         int realExponent = exponent;
         if (exponent < 0) {

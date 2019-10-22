@@ -1,6 +1,6 @@
-package CodingInterviews.ch03;
+package CodingInterviews;
 
-public class Print1ToMaxOfNDigits {
+public class _17_Print1ToMaxOfNDigits {
     static void print1ToMaxOfNDigits(int n) {
         if (n <= 0) return;
         int[] rst = new int[n];

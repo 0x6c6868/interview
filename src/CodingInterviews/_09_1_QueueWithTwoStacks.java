@@ -1,8 +1,8 @@
-package CodingInterviews.ch02;
+package CodingInterviews;
 
 import java.util.Stack;
 
-public class QueueWithTwoStacks {
+public class _09_1_QueueWithTwoStacks {
 
     static Stack<Integer> stack1 = new Stack<Integer>();
     static Stack<Integer> stack2 = new Stack<Integer>();

@@ -1,8 +1,8 @@
-package CodingInterviews.ch02;
+package CodingInterviews;
 
 import CodingInterviews.util.TreeNode;
 
-public class ConstructBinaryTree {
+public class _07_ConstructBinaryTree {
 
     static TreeNode reConstructBinaryTree(int[] pre, int[] in) {
         if (pre.length <= 0 || in.length <= 0 || pre.length != in.length) throw new IllegalArgumentException();

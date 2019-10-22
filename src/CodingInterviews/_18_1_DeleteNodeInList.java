@@ -1,8 +1,8 @@
-package CodingInterviews.ch03;
+package CodingInterviews;
 
 import CodingInterviews.util.ListNode;
 
-public class DeleteNodeInList {
+public class _18_1_DeleteNodeInList {
     static ListNode deleteNode(ListNode head, ListNode node) {
         if (head == null || node == null) return head;
 

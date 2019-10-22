@@ -1,6 +1,6 @@
-package CodingInterviews.ch02;
+package CodingInterviews;
 
-public class MinNumberInRotatedArray {
+public class _11_MinNumberInRotatedArray {
     static int minNumberInRotateArray(int[] array) {
         if (array == null || array.length <= 0) {
             throw new IllegalArgumentException();

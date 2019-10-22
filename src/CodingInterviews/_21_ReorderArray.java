@@ -1,6 +1,6 @@
-package CodingInterviews.ch03;
+package CodingInterviews;
 
-public class ReorderArray {
+public class _21_ReorderArray {
     static void reOrderArray(int[] array) {
         if (array == null || array.length <= 0) return;
 

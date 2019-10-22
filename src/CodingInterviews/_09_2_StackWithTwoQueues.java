@@ -1,9 +1,9 @@
-package CodingInterviews.ch02;
+package CodingInterviews;
 
 import java.util.LinkedList;
 import java.util.Queue;
 
-public class StackWithTwoQueues {
+public class _09_2_StackWithTwoQueues {
 
     static Queue<Integer> queue1 = new LinkedList<Integer>();
     static Queue<Integer> queue2 = new LinkedList<Integer>();
