@@ -1,7 +1,5 @@
 package CodingInterviews;
 
-import CodingInterviews.util.CharTreeNode;
-
 public class _08_NextNodeInBinaryTrees {
 
     static CharTreeNode findNextNode(CharTreeNode node) {

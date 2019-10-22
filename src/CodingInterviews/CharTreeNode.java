@@ -1,4 +1,4 @@
-package CodingInterviews.util;
+package CodingInterviews;
 
 public class CharTreeNode {
     public char val;

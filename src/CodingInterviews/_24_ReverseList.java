@@ -1,7 +1,5 @@
 package CodingInterviews;
 
-import CodingInterviews.util.ListNode;
-
 public class _24_ReverseList {
     static ListNode reverseList(ListNode head) {
         if (head == null) return head;

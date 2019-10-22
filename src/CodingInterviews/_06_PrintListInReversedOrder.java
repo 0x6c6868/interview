@@ -1,7 +1,5 @@
 package CodingInterviews;
 
-import CodingInterviews.util.ListNode;
-
 import java.util.ArrayList;
 import java.util.Stack;
 

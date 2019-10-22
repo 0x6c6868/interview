@@ -1,7 +1,5 @@
 package CodingInterviews;
 
-import CodingInterviews.util.ListNode;
-
 public class _22_KthNodeFromEnd {
     static ListNode findKthToTail(ListNode head, int k) {
         if (head == null) return head;

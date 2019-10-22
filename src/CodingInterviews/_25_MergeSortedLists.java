@@ -1,7 +1,5 @@
 package CodingInterviews;
 
-import CodingInterviews.util.ListNode;
-
 public class _25_MergeSortedLists {
     static ListNode merge(ListNode list1, ListNode list2) {
         if (list1 == null) {

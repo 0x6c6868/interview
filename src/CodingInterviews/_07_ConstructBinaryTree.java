@@ -1,7 +1,5 @@
 package CodingInterviews;
 
-import CodingInterviews.util.TreeNode;
-
 public class _07_ConstructBinaryTree {
 
     static TreeNode reConstructBinaryTree(int[] pre, int[] in) {
