@@ -8,10 +8,20 @@ public class _24_ReverseList {
         ListNode curr = head;
         ListNode next = null;
         while (curr != null) {
+            next = curr.next;
 
+            if(next == null) {
+                curr.next = prev;
+                break;
+            }
+
+            curr.next = prev;
+
+            prev = curr;
+            curr = next;
         }
 
-        return next;
+        return curr;
     }
 
     public static void main(String[] args) {
