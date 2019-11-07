@@ -1,6 +1,6 @@
 package CodingInterviews;
 
-public class _24_ReverseList {
+public class _24_1_ReverseList {
     static ListNode reverseList(ListNode head) {
         if (head == null) return head;
 
