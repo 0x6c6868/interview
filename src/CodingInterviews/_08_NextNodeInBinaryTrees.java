@@ -2,23 +2,23 @@ package CodingInterviews;
 
 public class _08_NextNodeInBinaryTrees {
 
-    static CharTreeNode findNextNode(CharTreeNode node) {
+    static TreeLinkNode getNext(TreeLinkNode pNode) {
 
-        if (node == null) return null;
+        if (pNode == null) return null;
 
-        if (node.right != null) {
-            CharTreeNode rstNode = node.right;
+        if (pNode.right != null) {
+            TreeLinkNode rstNode = pNode.right;
 
             while (rstNode.left != null)
                 rstNode = rstNode.left;
 
             return rstNode;
-        } else if (node.parent != null) {
-            CharTreeNode parent = node.parent;
+        } else if (pNode.next != null) {
+            TreeLinkNode parent = pNode.next;
 
-            while (parent != null && parent.right == node) {
-                node = node.parent;
-                parent = node.parent;
+            while (parent != null && parent.right == pNode) {
+                pNode = pNode.next;
+                parent = pNode.next;
             }
 
             return parent;
@@ -29,37 +29,37 @@ public class _08_NextNodeInBinaryTrees {
 
     public static void main(String[] args) {
 
-        CharTreeNode a = new CharTreeNode('a');
-        CharTreeNode b = new CharTreeNode('b');
-        CharTreeNode c = new CharTreeNode('c');
-        CharTreeNode d = new CharTreeNode('d');
-        CharTreeNode e = new CharTreeNode('e');
-        CharTreeNode f = new CharTreeNode('f');
-        CharTreeNode g = new CharTreeNode('g');
-        CharTreeNode h = new CharTreeNode('h');
-        CharTreeNode i = new CharTreeNode('i');
+        TreeLinkNode a = new TreeLinkNode('a');
+        TreeLinkNode b = new TreeLinkNode('b');
+        TreeLinkNode c = new TreeLinkNode('c');
+        TreeLinkNode d = new TreeLinkNode('d');
+        TreeLinkNode e = new TreeLinkNode('e');
+        TreeLinkNode f = new TreeLinkNode('f');
+        TreeLinkNode g = new TreeLinkNode('g');
+        TreeLinkNode h = new TreeLinkNode('h');
+        TreeLinkNode i = new TreeLinkNode('i');
 
         a.left = b;
         a.right = c;
-        b.parent = a;
-        c.parent = a;
+        b.next = a;
+        c.next = a;
 
         b.left = d;
         b.right = e;
-        d.parent = b;
-        e.parent = b;
+        d.next = b;
+        e.next = b;
 
         e.left = h;
         e.right = i;
-        h.parent = e;
-        i.parent = e;
+        h.next = e;
+        i.next = e;
 
         c.left = f;
         c.right = g;
-        f.parent = c;
-        f.parent = c;
+        f.next = c;
+        f.next = c;
 
-        CharTreeNode nextNode = findNextNode(a);
+        TreeLinkNode nextNode = getNext(a);
         System.out.println(nextNode.val);
 
     }
