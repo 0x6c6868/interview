@@ -2,7 +2,6 @@ package CodingInterviews;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Collections;
 
 public class _34_PathInTree {
     static ArrayList<ArrayList<Integer>> findPath(TreeNode root, int target) {
