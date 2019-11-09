@@ -34,7 +34,5 @@ public class _33_SquenceOfBST {
     }
 
     public static void main(String[] args) {
-        int[] sequence = {4, 8, 6, 12, 16, 14, 10};
-        verifySquenceOfBST(sequence);
     }
 }
