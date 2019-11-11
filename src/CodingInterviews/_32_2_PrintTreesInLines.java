@@ -6,14 +6,14 @@ import java.util.Queue;
 
 public class _32_2_PrintTreesInLines {
 
-    static ArrayList<ArrayList<Integer>> printInLines(TreeNode root) {
+    static ArrayList<ArrayList<Integer>> printInLines(TreeNode pRoot) {
         ArrayList<ArrayList<Integer>> rst = new ArrayList<>();
 
-        if (root == null) return rst;
+        if (pRoot == null) return rst;
 
         Queue<TreeNode> queue = new LinkedList<>();
         rst.add(new ArrayList<>());
-        queue.offer(root);
+        queue.offer(pRoot);
         int nextLevel = 0;
         int toBePrinted = 1;
         while (!queue.isEmpty()) {
@@ -41,13 +41,5 @@ public class _32_2_PrintTreesInLines {
     }
 
     public static void main(String[] args) {
-        TreeNode node100 = new TreeNode(100);
-        TreeNode node50 = new TreeNode(50);
-        TreeNode node150 = new TreeNode(150);
-
-        node100.left = node50;
-        node50.right = node150;
-
-        printInLines(node100);
     }
 }
