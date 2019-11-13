@@ -5,7 +5,7 @@ import java.util.Stack;
 
 public class _06_PrintListInReversedOrder {
 
-    static ArrayList<Integer> printListFromTailToHead(ListNode listNode) {
+    public ArrayList<Integer> printListFromTailToHead(ListNode listNode) {
         Stack<Integer> stack = new Stack();
 
         while (listNode != null) {
@@ -21,16 +21,4 @@ public class _06_PrintListInReversedOrder {
         return rst;
     }
 
-    public static void main(String[] args) {
-        ListNode n1 = new ListNode(67);
-        ListNode n2 = new ListNode(0);
-        ListNode n3 = new ListNode(24);
-        ListNode n4 = new ListNode(58);
-
-        n1.next = n2;
-        n2.next = n3;
-        n3.next = n4;
-
-        printListFromTailToHead(n1);
-    }
 }
