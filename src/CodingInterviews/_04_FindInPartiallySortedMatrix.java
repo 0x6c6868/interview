@@ -2,7 +2,7 @@ package CodingInterviews;
 
 public class _04_FindInPartiallySortedMatrix {
 
-    static boolean find(int[][] array, int target) {
+    public boolean Find(int target, int[][] array) {
         if (array == null) return false;
 
         int rows = array.length;
@@ -28,13 +28,4 @@ public class _04_FindInPartiallySortedMatrix {
         return false;
     }
 
-    public static void main(String[] args) {
-        int[][] array = {
-                {1, 2, 8, 9},
-                {2, 4, 9, 12},
-                {4, 7, 10, 13},
-                {6, 8, 11, 15}
-        };
-        System.out.println(find(array, 5));
-    }
 }
