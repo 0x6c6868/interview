@@ -1,7 +1,8 @@
 package CodingInterviews;
 
 public class _10_Fibonacci {
-    public int fibonacci(int n) {
+
+    public int Fibonacci(int n) {
         if (n <= 0) {
             return 0;
         }
@@ -16,9 +17,6 @@ public class _10_Fibonacci {
             fibTwo = fibN;
         }
         return fibN;
-
     }
 
-    public static void main(String[] args) {
-    }
 }
