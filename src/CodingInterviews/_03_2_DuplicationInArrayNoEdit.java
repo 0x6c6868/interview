@@ -2,9 +2,8 @@ package CodingInterviews;
 
 public class _03_2_DuplicationInArrayNoEdit {
 
-    static int duplicate(int[] numbers) {
-
-        if (numbers == null) return -1;
+    public boolean duplicate(int numbers[], int length, int[] duplication) {
+        if (numbers == null) return false;
 
         int start = 1;
         int end = numbers.length - 1;
@@ -14,7 +13,8 @@ public class _03_2_DuplicationInArrayNoEdit {
             int count = countRange(numbers, start, mid);
             if (end == start) {
                 if (count > 1) {
-                    return start;
+                    duplication[0] = start;
+                    return true;
                 } else {
                     break;
                 }
@@ -27,10 +27,10 @@ public class _03_2_DuplicationInArrayNoEdit {
             }
         }
 
-        return -1;
+        return false;
     }
 
-    static int countRange(int[] numbers, int start, int end) {
+    private int countRange(int[] numbers, int start, int end) {
         if (numbers == null) return 0;
 
         int count = 0;
@@ -42,8 +42,4 @@ public class _03_2_DuplicationInArrayNoEdit {
         return count;
     }
 
-    public static void main(String[] args) {
-        int[] nums = {2, 3, 5, 4, 3, 2, 6, 7};
-        System.out.println(duplicate(nums));
-    }
 }

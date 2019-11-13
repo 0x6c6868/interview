@@ -2,20 +2,21 @@ package CodingInterviews;
 
 public class _03_1_DuplicationInArray {
 
-    static int duplicate(int[] numbers) {
+    public boolean duplicate(int numbers[], int length, int[] duplication) {
 
-        if (numbers == null) return -1;
+        if (numbers == null) return false;
 
         for (int val : numbers) {
             if (val < 0 || val >= numbers.length) {
-                return -1;
+                return false;
             }
         }
 
         for (int i = 0; i < numbers.length; i++) {
             while (numbers[i] != i) {
                 if (numbers[i] == numbers[numbers[i]]) {
-                    return numbers[i];
+                    duplication[0] = numbers[i];
+                    return true;
                 }
 
                 int tmp = numbers[i];
@@ -23,11 +24,7 @@ public class _03_1_DuplicationInArray {
                 numbers[tmp] = tmp;
             }
         }
-        return -1;
+        return false;
     }
 
-    public static void main(String[] args) {
-        int[] nums = {2, 3, 1, 0, 2, 5, 3};
-        System.out.println(duplicate(nums));
-    }
 }
