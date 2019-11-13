@@ -2,7 +2,7 @@ package CodingInterviews;
 
 public class _05_1_ReplaceSpaces {
 
-    static String replaceSpace(StringBuffer str) {
+    public String replaceSpace(StringBuffer str) {
         if (str == null || str.length() < 0) return str.toString();
 
         int len = str.length();
@@ -37,9 +37,4 @@ public class _05_1_ReplaceSpaces {
         return str.toString();
     }
 
-    public static void main(String[] args) {
-        StringBuffer str = new StringBuffer();
-        str.append("We are Happy.");
-        System.out.println(replaceSpace(str));
-    }
 }
