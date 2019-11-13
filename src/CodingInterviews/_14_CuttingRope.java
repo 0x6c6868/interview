@@ -2,18 +2,18 @@ package CodingInterviews;
 
 public class _14_CuttingRope {
 
-    static int maxProductAfterCutting(int length) {
-        if (length < 2) return 0;
-        if (length == 2) return 1;
-        if (length == 3) return 2;
+    public int cutRope(int target) {
+        if (target < 2) return 0;
+        if (target == 2) return 1;
+        if (target == 3) return 2;
 
-        int[] maxProduct = new int[length + 1];
+        int[] maxProduct = new int[target + 1];
         maxProduct[0] = 0;
         maxProduct[1] = 1;
         maxProduct[2] = 2;
         maxProduct[3] = 3;
 
-        for (int i = 4; i <= length; i++) {
+        for (int i = 4; i <= target; i++) {
             int max = 0;
             for (int j = 1; j <= i / 2; j++) {
                 int tmp = maxProduct[j] * maxProduct[i - j];
@@ -23,19 +23,7 @@ public class _14_CuttingRope {
             }
             maxProduct[i] = max;
         }
-        return maxProduct[length];
+        return maxProduct[target];
     }
 
-    public static void main(String[] args) {
-        System.out.println(maxProductAfterCutting(1) == 0);
-        System.out.println(maxProductAfterCutting(2) == 1);
-        System.out.println(maxProductAfterCutting(3) == 2);
-        System.out.println(maxProductAfterCutting(4));
-        System.out.println(maxProductAfterCutting(5));
-        System.out.println(maxProductAfterCutting(6));
-        System.out.println(maxProductAfterCutting(7));
-        System.out.println(maxProductAfterCutting(8));
-        System.out.println(maxProductAfterCutting(9));
-        System.out.println(maxProductAfterCutting(10));
-    }
 }

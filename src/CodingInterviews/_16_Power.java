@@ -1,6 +1,7 @@
 package CodingInterviews;
 
 public class _16_Power {
+
     public double Power(double base, int exponent) {
         int realExponent = exponent;
         if (exponent < 0) {
@@ -23,6 +24,4 @@ public class _16_Power {
         return exponent > 0 ? rst : 1 / rst;
     }
 
-    public static void main(String[] args) {
-    }
 }

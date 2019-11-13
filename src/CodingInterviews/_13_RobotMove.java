@@ -1,17 +1,18 @@
 package CodingInterviews;
 
 public class _13_RobotMove {
-    static int movingCount(int threshold, int rows, int cols) {
+
+    public int movingCount(int threshold, int rows, int cols) {
         if (rows <= 0 || cols <= 0) return 0;
 
         boolean[][] visited = new boolean[rows][cols];
         return movingCountCore(threshold, 0, 0, rows, cols, visited);
     }
 
-    static int movingCountCore(int threshold,
-                               int row, int col,
-                               int rows, int cols,
-                               boolean[][] visited) {
+    private int movingCountCore(int threshold,
+                                int row, int col,
+                                int rows, int cols,
+                                boolean[][] visited) {
         if (row < 0 || col < 0 || row >= rows || col >= cols) {
             return 0;
         }
@@ -30,7 +31,7 @@ public class _13_RobotMove {
         return 0;
     }
 
-    static boolean check(int threshold, int row, int col) {
+    private boolean check(int threshold, int row, int col) {
         int count = 0;
         while (row > 0) {
             count += row % 10;
@@ -43,15 +44,4 @@ public class _13_RobotMove {
         return count <= threshold;
     }
 
-    public static void main(String[] args) {
-        System.out.println(movingCount(5, 10, 10) == 21);
-        System.out.println(movingCount(15, 20, 20) == 359);
-        System.out.println(movingCount(10, 1, 100) == 29);
-        System.out.println(movingCount(10, 1, 10) == 10);
-        System.out.println(movingCount(15, 100, 1) == 79);
-        System.out.println(movingCount(15, 10, 1) == 10);
-        System.out.println(movingCount(15, 1, 1) == 1);
-        System.out.println(movingCount(0, 1, 1) == 1);
-        System.out.println(movingCount(-10, 10, 10) == 0);
-    }
 }
