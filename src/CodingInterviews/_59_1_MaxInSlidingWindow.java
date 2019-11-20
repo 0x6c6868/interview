@@ -36,15 +36,7 @@ public class _59_1_MaxInSlidingWindow {
             start++;
             end++;
         }
-
         return rst;
-    }
-
-    public static void main(String[] args) {
-        _59_1_MaxInSlidingWindow p = new _59_1_MaxInSlidingWindow();
-
-        int[] num = new int[]{10, 14, 12, 11};
-        p.maxInWindows(num, 0);
     }
 
 }
