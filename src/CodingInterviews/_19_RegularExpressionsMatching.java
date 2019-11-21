@@ -1,13 +1,14 @@
 package CodingInterviews;
 
 public class _19_RegularExpressionsMatching {
-    static boolean match(char[] str, char[] pattern) {
+
+    public boolean match(char[] str, char[] pattern) {
         if (str == null || pattern == null) return false;
         if (str.length == 0 && pattern.length == 0) return true;
         return matchCore(str, pattern, 0, 0);
     }
 
-    static boolean matchCore(char[] str, char[] pattern, int strIndex, int patternIndex) {
+    private boolean matchCore(char[] str, char[] pattern, int strIndex, int patternIndex) {
         if (strIndex >= str.length && patternIndex >= pattern.length) return true;
 
         if (strIndex >= str.length && patternIndex < pattern.length) {
@@ -37,9 +38,4 @@ public class _19_RegularExpressionsMatching {
         return false;
     }
 
-    public static void main(String[] args) {
-        char[] tmp1 = new char[]{'a'};
-        char[] tmp2 = new char[]{'.'};
-        match(tmp1, tmp2);
-    }
 }

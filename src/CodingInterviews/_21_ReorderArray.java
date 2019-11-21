@@ -1,7 +1,8 @@
 package CodingInterviews;
 
 public class _21_ReorderArray {
-    static void reOrderArray(int[] array) {
+
+    public void reOrderArray(int[] array) {
         if (array == null || array.length <= 0) return;
 
         int curr = 0;
@@ -24,7 +25,4 @@ public class _21_ReorderArray {
         }
     }
 
-    public static void main(String[] args) {
-        reOrderArray(new int[]{1, 3, 5, 7, 2, 4, 6});
-    }
 }

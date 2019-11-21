@@ -1,7 +1,8 @@
 package CodingInterviews;
 
 public class _20_NumericStrings {
-    static boolean isNumeric(char[] str) {
+
+    public boolean isNumeric(char[] str) {
         if (str == null) return false;
 
         boolean numeric = false;
@@ -25,20 +26,16 @@ public class _20_NumericStrings {
         return numeric && index == str.length;
     }
 
-    static int scanUnsignedInteger(char[] str, int index) {
+    private int scanUnsignedInteger(char[] str, int index) {
         while (index < str.length && str[index] >= '0' && str[index] <= '9')
             index++;
         return index;
     }
 
-    static int scanInteger(char[] str, int index) {
+    private int scanInteger(char[] str, int index) {
         if (str[index] == '+' || str[index] == '-')
             return scanUnsignedInteger(str, index + 1);
         return scanUnsignedInteger(str, index);
     }
 
-    public static void main(String[] args) {
-        char[] rst = new char[]{'+', '-', '5'};
-        isNumeric(rst);
-    }
 }

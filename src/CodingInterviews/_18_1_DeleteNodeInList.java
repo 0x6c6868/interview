@@ -1,7 +1,8 @@
 package CodingInterviews;
 
 public class _18_1_DeleteNodeInList {
-    static ListNode deleteNode(ListNode head, ListNode node) {
+
+    public ListNode deleteNode(ListNode head, ListNode node) {
         if (head == null || node == null) return head;
 
         // 删除头节点
@@ -36,7 +37,8 @@ public class _18_1_DeleteNodeInList {
         node3.next = node4;
         node4.next = node5;
 
-        deleteNode(node1, node1);
+        _18_1_DeleteNodeInList p = new _18_1_DeleteNodeInList();
 
+        p.deleteNode(node1, node1);
     }
 }

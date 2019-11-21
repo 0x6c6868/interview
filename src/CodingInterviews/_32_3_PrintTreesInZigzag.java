@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Stack;
 
 public class _32_3_PrintTreesInZigzag {
+
     static ArrayList<ArrayList<Integer>> print(TreeNode pRoot) {
         ArrayList<ArrayList<Integer>> rst = new ArrayList<>();
 
@@ -37,6 +38,4 @@ public class _32_3_PrintTreesInZigzag {
         return rst;
     }
 
-    public static void main(String[] args) {
-    }
 }

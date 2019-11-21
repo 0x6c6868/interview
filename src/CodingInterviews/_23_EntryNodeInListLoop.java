@@ -1,7 +1,8 @@
 package CodingInterviews;
 
 public class _23_EntryNodeInListLoop {
-    static ListNode entryNodeOfLoop(ListNode pHead) {
+
+    public ListNode entryNodeOfLoop(ListNode pHead) {
 
         if (pHead == null) return null;
 
@@ -22,11 +23,10 @@ public class _23_EntryNodeInListLoop {
             pHead = pHead.next;
             firstNode = firstNode.next;
         }
-
         return pHead;
     }
 
-    static ListNode meetingNode(ListNode pHead) {
+    private ListNode meetingNode(ListNode pHead) {
         if (pHead == null || pHead.next == null || pHead.next.next == null) return null;
 
         ListNode fastNode = pHead.next.next;
@@ -42,8 +42,4 @@ public class _23_EntryNodeInListLoop {
         return fastNode.next;
     }
 
-    public static void main(String[] args) {
-        ListNode node1 = new ListNode(1);
-        entryNodeOfLoop(node1);
-    }
 }

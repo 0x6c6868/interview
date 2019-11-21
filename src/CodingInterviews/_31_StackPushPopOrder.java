@@ -4,7 +4,7 @@ import java.util.Stack;
 
 public class _31_StackPushPopOrder {
 
-    static boolean isPopOrder(int[] pushA, int[] popA) {
+    public boolean isPopOrder(int[] pushA, int[] popA) {
         if (pushA == null && popA == null) return true;
         if (pushA == null || popA == null) return false;
 
@@ -35,6 +35,4 @@ public class _31_StackPushPopOrder {
         return true;
     }
 
-    public static void main(String[] args) {
-    }
 }

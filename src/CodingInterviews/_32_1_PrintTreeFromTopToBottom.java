@@ -5,7 +5,8 @@ import java.util.LinkedList;
 import java.util.Queue;
 
 public class _32_1_PrintTreeFromTopToBottom {
-    static ArrayList<Integer> printFromTopToBottom(TreeNode root) {
+
+    public ArrayList<Integer> printFromTopToBottom(TreeNode root) {
         ArrayList<Integer> rst = new ArrayList<>();
 
         if (root == null) return rst;
@@ -23,6 +24,4 @@ public class _32_1_PrintTreeFromTopToBottom {
         return rst;
     }
 
-    public static void main(String[] args) {
-    }
 }

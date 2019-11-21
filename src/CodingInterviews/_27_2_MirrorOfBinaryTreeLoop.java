@@ -5,7 +5,7 @@ import java.util.Queue;
 
 public class _27_2_MirrorOfBinaryTreeLoop {
 
-    static void mirror(TreeNode root) {
+    public void mirror(TreeNode root) {
         if (root == null) return;
 
         Queue<TreeNode> q = new ArrayDeque();
@@ -24,4 +24,5 @@ public class _27_2_MirrorOfBinaryTreeLoop {
                 q.offer(currNode.right);
         }
     }
+
 }

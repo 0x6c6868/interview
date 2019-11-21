@@ -1,7 +1,8 @@
 package CodingInterviews;
 
 public class _35_CopyComplexList {
-    static RandomListNode clone(RandomListNode pHead) {
+
+    public RandomListNode clone(RandomListNode pHead) {
         if (pHead == null) return null;
 
         RandomListNode rst = null;
@@ -44,6 +45,4 @@ public class _35_CopyComplexList {
         return rst;
     }
 
-    public static void main(String[] args) {
-    }
 }

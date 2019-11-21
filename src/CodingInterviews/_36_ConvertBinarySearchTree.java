@@ -1,12 +1,13 @@
 package CodingInterviews;
 
 public class _36_ConvertBinarySearchTree {
-    static TreeNode convert(TreeNode pRootOfTree) {
+
+    public TreeNode convert(TreeNode pRootOfTree) {
         if (pRootOfTree == null) return null;
         return convertCore(pRootOfTree);
     }
 
-    static TreeNode convertCore(TreeNode node) {
+    private TreeNode convertCore(TreeNode node) {
         TreeNode leftNode = node;
 
         if (node.left != null) {
@@ -27,6 +28,4 @@ public class _36_ConvertBinarySearchTree {
         return leftNode;
     }
 
-    public static void main(String[] args) {
-    }
 }

@@ -3,6 +3,7 @@ package CodingInterviews;
 import java.util.ArrayList;
 
 public class _29_PrintMatrix {
+
     static ArrayList<Integer> printMatrix(int[][] matrix) {
         if (matrix == null) return null;
 
@@ -56,8 +57,4 @@ public class _29_PrintMatrix {
         return rst;
     }
 
-    public static void main(String[] args) {
-        int[][] matrix = {{1, 2}, {3, 4}};
-        printMatrix(matrix);
-    }
 }

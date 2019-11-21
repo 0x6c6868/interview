@@ -4,7 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class _34_PathInTree {
-    static ArrayList<ArrayList<Integer>> findPath(TreeNode root, int target) {
+
+    public ArrayList<ArrayList<Integer>> findPath(TreeNode root, int target) {
         ArrayList<ArrayList<Integer>> rst = new ArrayList<>();
         if (root == null) return rst;
 
@@ -15,9 +16,9 @@ public class _34_PathInTree {
         return rst;
     }
 
-    static void findPathCore(TreeNode node, int target,
-                             int currSum, List<Integer> path,
-                             ArrayList<ArrayList<Integer>> rst) {
+    private void findPathCore(TreeNode node, int target,
+                              int currSum, List<Integer> path,
+                              ArrayList<ArrayList<Integer>> rst) {
         if (node.left == null && node.right == null) {
             if (currSum == target) {
                 ArrayList<Integer> newList = new ArrayList<>(path);
@@ -39,6 +40,4 @@ public class _34_PathInTree {
         }
     }
 
-    public static void main(String[] args) {
-    }
 }

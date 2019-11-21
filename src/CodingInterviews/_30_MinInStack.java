@@ -4,10 +4,10 @@ import java.util.Stack;
 
 public class _30_MinInStack {
 
-    static Stack<Integer> stack1 = new Stack();
-    static Stack<Integer> stack2 = new Stack();
+    private Stack<Integer> stack1 = new Stack();
+    private Stack<Integer> stack2 = new Stack();
 
-    static void push(int node) {
+    public void push(int node) {
         stack1.push(node);
 
         if (stack2.isEmpty()) {
@@ -25,12 +25,12 @@ public class _30_MinInStack {
         }
     }
 
-    static void pop() {
+    public void pop() {
         stack1.pop();
         stack2.pop();
     }
 
-    static int top() {
+    public int top() {
         if (stack1.isEmpty()) return -1;
 
         int tmp = stack1.pop();
@@ -38,7 +38,7 @@ public class _30_MinInStack {
         return tmp;
     }
 
-    static int min() {
+    public int min() {
         if (stack2.isEmpty()) return -1;
 
         int tmp = stack2.pop();
@@ -46,6 +46,4 @@ public class _30_MinInStack {
         return tmp;
     }
 
-    public static void main(String[] args) {
-    }
 }

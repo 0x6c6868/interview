@@ -1,12 +1,13 @@
 package CodingInterviews;
 
 public class _33_SquenceOfBST {
-    static boolean verifySquenceOfBST(int[] sequence) {
+
+    public boolean verifySquenceOfBST(int[] sequence) {
         if (sequence == null || sequence.length == 0) return false;
         return verifySquenceOfBSTCore(sequence, 0, sequence.length - 1);
     }
 
-    static boolean verifySquenceOfBSTCore(int[] sequence, int start, int end) {
+    private boolean verifySquenceOfBSTCore(int[] sequence, int start, int end) {
         if (start >= end) return true;
 
         int leftIndex = start;
@@ -33,6 +34,4 @@ public class _33_SquenceOfBST {
         return leftFlag && rightFlag;
     }
 
-    public static void main(String[] args) {
-    }
 }
