@@ -3,27 +3,24 @@ package CodingInterviews;
 public class _03_1_DuplicationInArray {
 
     public boolean duplicate(int numbers[], int length, int[] duplication) {
+        if (numbers == null || length == 0) return false;
 
-        if (numbers == null) return false;
-
-        for (int val : numbers) {
-            if (val < 0 || val >= numbers.length) {
-                return false;
+        for (int i = 0; i < length; ) {
+            if (i == numbers[i]) {
+                i++;
+                continue;
             }
+
+            int swap = numbers[i];
+            if (numbers[swap] == swap) {
+                duplication[0] = swap;
+                return true;
+            }
+
+            numbers[i] = numbers[swap];
+            numbers[swap] = swap;
         }
 
-        for (int i = 0; i < numbers.length; i++) {
-            while (numbers[i] != i) {
-                if (numbers[i] == numbers[numbers[i]]) {
-                    duplication[0] = numbers[i];
-                    return true;
-                }
-
-                int tmp = numbers[i];
-                numbers[i] = numbers[tmp];
-                numbers[tmp] = tmp;
-            }
-        }
         return false;
     }
 

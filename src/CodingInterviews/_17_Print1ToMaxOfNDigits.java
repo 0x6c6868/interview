@@ -1,43 +1,33 @@
 package CodingInterviews;
 
 public class _17_Print1ToMaxOfNDigits {
-    static void print1ToMaxOfNDigits(int n) {
+    public void print1ToMaxOfNDigits(int n) {
         if (n <= 0) return;
-        int[] rst = new int[n];
-        printCore(rst, 0);
+        char[] array = new char[n];
+        core(array, 0);
     }
 
-    static void printCore(int[] rst, int index) {
-        if (index == rst.length) {
-            print(rst);
+    private void core(char[] array, int index) {
+        if (index >= array.length) {
+            boolean flag = false;
+            for (int i = 0; i < array.length; i++) {
+                if (array[i] != '0' || flag) {
+                    System.out.print(array[i]);
+                    flag = true;
+                }
+            }
+            System.out.println();
             return;
         }
 
-        for (int i = 0; i <= 9; i++) {
-            rst[index] = i;
-            printCore(rst, index + 1);
+        for (char i = '0'; i <= '9'; i++) {
+            array[index] = i;
+            core(array, index + 1);
         }
-    }
-
-    static void print(int[] rst) {
-        int i = 0;
-        while (i < rst.length && rst[i] == 0) {
-            i++;
-        }
-
-        if (i == rst.length) {
-            System.out.println(0);
-            return;
-        }
-
-        for (int j = i; j < rst.length; j++) {
-            System.out.print(rst[j]);
-        }
-        // 换行
-        System.out.println();
     }
 
     public static void main(String[] args) {
-        print1ToMaxOfNDigits(3);
+        _17_Print1ToMaxOfNDigits p = new _17_Print1ToMaxOfNDigits();
+        p.print1ToMaxOfNDigits(2);
     }
 }

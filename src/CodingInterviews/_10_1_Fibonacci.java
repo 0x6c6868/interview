@@ -3,16 +3,14 @@ package CodingInterviews;
 public class _10_1_Fibonacci {
 
     public int Fibonacci(int n) {
-        if (n <= 0) {
-            return 0;
-        }
+        int[] rst = {0, 1};
+        if (n < 2) return rst[n];
 
         int fibOne = 0;
         int fibTwo = 1;
-        int fibN = fibTwo;
+        int fibN = 0;
         for (int i = 2; i <= n; i++) {
             fibN = fibOne + fibTwo;
-
             fibOne = fibTwo;
             fibTwo = fibN;
         }

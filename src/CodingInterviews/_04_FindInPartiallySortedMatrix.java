@@ -3,29 +3,26 @@ package CodingInterviews;
 public class _04_FindInPartiallySortedMatrix {
 
     public boolean Find(int target, int[][] array) {
-        if (array == null) return false;
+        if (array == null || array.length == 0) return false;
 
         int rows = array.length;
-        if (rows < 1) return false;
-
         int cols = array[0].length;
-        if (cols < 1) return false;
 
-        int row = 0;
-        int col = cols - 1;
-        while (row < rows && col >= 0) {
-            if (array[row][col] == target) {
-                return true;
-            }
+        int x = 0;
+        int y = cols - 1;
 
-            if (array[row][col] > target) {
-                col = col - 1;
-            } else if (array[row][col] < target) {
-                row = row + 1;
-            }
+        while (x < rows && y >= 0) {
+            int curr = array[x][y];
+
+            if (curr == target) return true;
+
+            if (curr > target) y--;
+            else x++;
+
         }
 
         return false;
+
     }
 
 }

@@ -3,53 +3,34 @@ package CodingInterviews;
 public class _12_StringPathInMatrix {
 
     public boolean hasPath(char[] matrix, int rows, int cols, char[] str) {
+        if (matrix == null || matrix.length == 0
+                || rows <= 0 || cols <= 0
+                || str == null || str.length == 0) return false;
 
-        if (matrix == null || rows <= 0 || cols <= 0) {
-            return false;
-        }
+        int[] visited = new int[rows * cols];
 
-        boolean[][] visited = new boolean[rows][cols];
+        for (int i = 0; i < rows; i++)
+            for (int j = 0; j < cols; j++)
+                if (hasPathCore(matrix, rows, cols, i, j, visited, str, 0)) return true;
 
-        for (int i = 0; i < rows; i++) {
-            for (int j = 0; j < cols; j++) {
-                if (hasPathCore(matrix, rows, cols, i, j, visited, str, 0)) {
-                    return true;
-                }
-            }
-        }
         return false;
     }
 
-    private boolean hasPathCore(char[] matrix,
-                                int rows, int cols,
-                                int row, int col,
-                                boolean[][] visited,
-                                char[] str, int index) {
-        // 到底了
-        if (index >= str.length) {
-            return true;
-        }
+    public boolean hasPathCore(char[] matrix, int rows, int cols, int x, int y,
+                               int[] visited, char[] str, int i) {
+        if (i >= str.length) return true;
+        if (x < 0 || x >= rows || y < 0 || y >= cols) return false;
+        if (visited[x * cols + y] == 1) return false;
+        if (matrix[x * cols + y] != str[i]) return false;
 
-        // 访问越界
-        if (row < 0 || col < 0 || row >= rows || col >= cols) {
-            return false;
-        }
+        visited[x * cols + y] = 1;
+        boolean flag = hasPathCore(matrix, rows, cols, x - 1, y, visited, str, i + 1)
+                || hasPathCore(matrix, rows, cols, x + 1, y, visited, str, i + 1)
+                || hasPathCore(matrix, rows, cols, x, y - 1, visited, str, i + 1)
+                || hasPathCore(matrix, rows, cols, x, y + 1, visited, str, i + 1);
 
-        // 访问过了
-        if (visited[row][col] == true) return false;
-
-        // 当前向下继续访问
-        if (matrix[row * cols + col] == str[index]) {
-            visited[row][col] = true;
-            boolean hasPath = hasPathCore(matrix, rows, cols, row - 1, col, visited, str, index + 1) ||
-                    hasPathCore(matrix, rows, cols, row, col - 1, visited, str, index + 1) ||
-                    hasPathCore(matrix, rows, cols, row + 1, col, visited, str, index + 1) ||
-                    hasPathCore(matrix, rows, cols, row, col + 1, visited, str, index + 1);
-            if (hasPath) {
-                return hasPath;
-            }
-            visited[row][col] = false;
-        }
+        if (flag) return true;
+        visited[x * cols + y] = 0;
         return false;
     }
 

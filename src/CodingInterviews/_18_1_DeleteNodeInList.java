@@ -5,23 +5,19 @@ public class _18_1_DeleteNodeInList {
     public ListNode deleteNode(ListNode head, ListNode node) {
         if (head == null || node == null) return head;
 
-        // 删除头节点
-        if (head == node) {
-            return head.next;
-        }
+        if (head == node) return head.next;
 
-        // 需要删除节点是尾节点
         if (node.next == null) {
-            ListNode curr = head;
-            while (curr.next == node) {
-                curr.next = null;
-                node = node.next;
-            }
-        }
+            ListNode prev = head;
+            while (prev.next != null && prev.next != node) prev = prev.next;
 
-        // 下个节点指向当前
-        node.val = node.next.val;
-        node.next = node.next.next;
+            if (prev.next != node) return head;
+
+            prev.next = node.next;
+        } else {
+            node.val = node.next.val;
+            node.next = node.next.next;
+        }
         return head;
     }
 
@@ -39,6 +35,6 @@ public class _18_1_DeleteNodeInList {
 
         _18_1_DeleteNodeInList p = new _18_1_DeleteNodeInList();
 
-        p.deleteNode(node1, node1);
+        ListNode dummy = p.deleteNode(node1, node5);
     }
 }

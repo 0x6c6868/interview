@@ -3,36 +3,23 @@ package CodingInterviews;
 public class _18_2_DeleteDuplicatedNode {
 
     public ListNode deleteDuplication(ListNode pHead) {
-        if (pHead == null) return null;
+        ListNode nHead = new ListNode(0);
+        nHead.next = pHead;
 
-        ListNode head = null;
+        ListNode prev = nHead;
+        ListNode last = pHead;
 
-        ListNode preNode = null;
-        ListNode currNode = pHead;
-        while (currNode != null) {
-            ListNode nextNode = currNode.next;
-
-            if (nextNode != null && currNode.val == nextNode.val) {
-                while (nextNode.next != null && nextNode.next.val == nextNode.val) nextNode = nextNode.next;
-
-                if (preNode == null || preNode.val == currNode.val) {
-                    preNode = nextNode.next;
-                    head = preNode;
-                } else {
-                    preNode.next = nextNode.next;
-                }
-
-                currNode = nextNode.next;
+        while (last != null) {
+            if (last.next != null && last.val == last.next.val) {
+                while (last.next != null && last.val == last.next.val) last = last.next;
+                prev.next = last.next;
+                last = last.next;
             } else {
-
-                if (preNode == null)
-                    head = currNode;
-
-                preNode = currNode;
-                currNode = nextNode;
+                prev = prev.next;
+                last = last.next;
             }
         }
-        return head;
+        return nHead.next;
     }
 
 }

@@ -3,25 +3,24 @@ package CodingInterviews;
 public class _16_Power {
 
     public double Power(double base, int exponent) {
-        int realExponent = exponent;
-        if (exponent < 0) {
-            if (base == 0) {
-                throw new RuntimeException("输入不合法");
-            }
-            realExponent = -exponent;
-        }
+        if (exponent == 0) return 1;
 
-        double rst = 1;
-        while (realExponent > 0) {
-            if ((realExponent & 1) > 0) {
-                rst *= base;
-                realExponent -= 1;
-            } else {
-                rst *= rst;
-                realExponent /= 2;
-            }
+        boolean flag = false;
+        if (exponent < 0) {
+            flag = true;
+            exponent = -exponent;
         }
-        return exponent > 0 ? rst : 1 / rst;
+        double rst = PowerCore(base, exponent);
+        return flag ? 1 / rst : rst;
+    }
+
+    private double PowerCore(double base, int exponent) {
+        if (exponent == 0) return 1;
+        if (exponent % 2 == 1) {
+            return PowerCore(base, exponent - 1) * base;
+        } else {
+            return PowerCore(base, exponent / 2) * PowerCore(base, exponent / 2);
+        }
     }
 
 }

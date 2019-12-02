@@ -3,38 +3,35 @@ package CodingInterviews;
 public class _05_1_ReplaceSpaces {
 
     public String replaceSpace(StringBuffer str) {
-        if (str == null || str.length() < 0) return str.toString();
+        if (str == null || str.length() == 0) return "";
 
-        int len = str.length();
-        int numOfBlank = 0;
-        for (int i = 0; i < len; i++) {
-            char val = str.charAt(i);
-            if (val == ' ') {
-                numOfBlank++;
-            }
-        }
+        char[] array = str.toString().toCharArray();
 
-        int newLen = len + numOfBlank * 2;
-        if (newLen <= len) {
-            return str.toString();
-        }
+        int countOfSpace = 0;
+        for (int i = 0; i < array.length; i++)
+            if (array[i] == ' ')
+                countOfSpace++;
 
-        str.setLength(newLen);
+        char[] newArray = new char[array.length + 2 * countOfSpace];
 
-        int indexOfOrginal = len - 1;
-        int indexOfNew = newLen - 1;
-        while (indexOfOrginal >= 0) {
-            if (str.charAt(indexOfOrginal) == ' ') {
-                str.replace(indexOfNew - 2, indexOfNew + 1, "%20");
-                indexOfNew -= 3;
+        int i = array.length - 1;
+        int j = newArray.length - 1;
+
+        while (i >= 0) {
+            if (array[i] == ' ') {
+                newArray[j] = '0';
+                newArray[j - 1] = '2';
+                newArray[j - 2] = '%';
+                j -= 2;
             } else {
-                str.replace(indexOfNew, indexOfNew + 1, String.valueOf(str.charAt(indexOfOrginal)));
-                indexOfNew -= 1;
+                newArray[j] = array[i];
             }
-            indexOfOrginal--;
+            i--;
+            j--;
         }
 
-        return str.toString();
+        return String.valueOf(newArray);
+
     }
 
 }

@@ -3,35 +3,27 @@ package CodingInterviews;
 public class _11_MinNumberInRotatedArray {
 
     public int minNumberInRotateArray(int[] array) {
-        if (array == null || array.length <= 0) {
-            throw new IllegalArgumentException();
-        }
+        if (array == null || array.length == 0) return 0;
 
         int start = 0;
         int end = array.length - 1;
-        while (start < end) {
-            if (start + 1 == end) {
-                return array[end];
+        while (start <= end) {
+            if (start == end) return array[start];
+
+            if (array[start] < array[end]) return array[start];
+
+            if (array[start] == array[end]) {
+                int min = array[start];
+                for (int i = start; i <= end; i++)
+                    if (array[i] < min) min = array[i];
+                return min;
             }
 
-            int mid = start + (end - start) / 2;
-            if (array[start] == array[mid] && array[mid] == array[end]) {
-                int tmp = array[start];
-                for (int i = start + 1; i <= end; i++) {
-                    if (array[i] < tmp) {
-                        return array[i];
-                    }
-                }
-                return tmp;
-            }
-
-            if (array[mid] > array[end]) {
-                start = mid;
-            } else {
-                end = mid;
-            }
+            int mid = (end - start) / 2 + start;
+            if (array[start] > array[mid]) end = mid;
+            else start = mid + 1;
         }
-        return array[0];
+        return 0;
     }
 
 }

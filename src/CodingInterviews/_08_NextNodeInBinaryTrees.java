@@ -6,24 +6,17 @@ public class _08_NextNodeInBinaryTrees {
         if (pNode == null) return null;
 
         if (pNode.right != null) {
-            TreeLinkNode rstNode = pNode.right;
-
-            while (rstNode.left != null)
-                rstNode = rstNode.left;
-
-            return rstNode;
-        } else if (pNode.next != null) {
-            TreeLinkNode parent = pNode.next;
-
-            while (parent != null && parent.right == pNode) {
-                pNode = pNode.next;
-                parent = pNode.next;
-            }
-
-            return parent;
+            TreeLinkNode curr = pNode.right;
+            while (curr.left != null) curr = curr.left;
+            return curr;
         }
 
-        return null;
+        TreeLinkNode parentNode = pNode.next;
+        while (parentNode != null && parentNode.right == pNode) {
+            pNode = parentNode;
+            parentNode = pNode.next;
+        }
+        return parentNode;
     }
 
 }

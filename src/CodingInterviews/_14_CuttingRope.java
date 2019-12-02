@@ -1,29 +1,26 @@
 package CodingInterviews;
 
 public class _14_CuttingRope {
-
     public int cutRope(int target) {
-        if (target < 2) return 0;
+        if (target == 1) return 1;
         if (target == 2) return 1;
         if (target == 3) return 2;
 
-        int[] maxProduct = new int[target + 1];
-        maxProduct[0] = 0;
-        maxProduct[1] = 1;
-        maxProduct[2] = 2;
-        maxProduct[3] = 3;
+        int[] rst = new int[target + 1];
+
+        rst[1] = 1;
+        rst[2] = 2;
+        rst[3] = 3;
 
         for (int i = 4; i <= target; i++) {
-            int max = 0;
-            for (int j = 1; j <= i / 2; j++) {
-                int tmp = maxProduct[j] * maxProduct[i - j];
-                if (tmp > max) {
-                    max = tmp;
-                }
+            int max = 1;
+            for (int j = 1; j < i; j++) {
+                if (rst[j] * rst[i - j] > max) max = rst[j] * rst[i - j];
             }
-            maxProduct[i] = max;
+            rst[i] = max;
         }
-        return maxProduct[target];
+
+        return rst[target];
     }
 
 }
