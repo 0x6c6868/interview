@@ -1,9 +1,8 @@
 package CodingInterviews;
 
 public class _21_ReorderArray {
-
     public void reOrderArray(int[] array) {
-        if (array == null || array.length <= 0) return;
+        if (array == null || array.length == 0) return;
 
         int curr = 0;
         while (curr < array.length) {
@@ -14,15 +13,13 @@ public class _21_ReorderArray {
 
             int next = curr + 1;
             while (next < array.length && array[next] % 2 == 0) next++;
-
             if (next == array.length) break;
 
-            int tmp = array[next];
+            int swap = array[next];
             for (int i = next; i > curr; i--) {
                 array[i] = array[i - 1];
             }
-            array[curr] = tmp;
+            array[curr] = swap;
         }
     }
-
 }

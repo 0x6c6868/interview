@@ -2,44 +2,34 @@ package CodingInterviews;
 
 public class _23_EntryNodeInListLoop {
 
-    public ListNode entryNodeOfLoop(ListNode pHead) {
-
+    public ListNode EntryNodeOfLoop(ListNode pHead) {
         if (pHead == null) return null;
+        if (pHead.next == null) return null;
 
-        ListNode meetNode = meetingNode(pHead);
-        if (meetNode == null) return null;
+        ListNode fast = pHead.next.next;
+        ListNode slow = pHead.next;
 
-        int nodesInLoop = 1;
-        ListNode currNode = meetNode;
-        while (currNode.next != meetNode) {
-            currNode = currNode.next;
-            nodesInLoop++;
+        while (fast != slow) {
+            fast = fast.next.next;
+            slow = slow.next;
         }
 
-        ListNode firstNode = pHead;
-        for (int i = 0; i < nodesInLoop; i++) firstNode = firstNode.next;
-
-        while (pHead != firstNode) {
-            pHead = pHead.next;
-            firstNode = firstNode.next;
-        }
-        return pHead;
-    }
-
-    private ListNode meetingNode(ListNode pHead) {
-        if (pHead == null || pHead.next == null || pHead.next.next == null) return null;
-
-        ListNode fastNode = pHead.next.next;
-        ListNode slowNode = pHead;
-
-        while (fastNode != slowNode &&
-                fastNode != null &&
-                fastNode.next != null) {
-            fastNode = fastNode.next.next;
-            slowNode = slowNode.next;
+        int len = 1;
+        fast = fast.next;
+        while (fast != slow) {
+            fast = fast.next;
+            len++;
         }
 
-        return fastNode.next;
+        ListNode first = pHead;
+        ListNode second = pHead;
+
+        for (int i = 0; i < len; i++) first = first.next;
+        while (first != second) {
+            first = first.next;
+            second = second.next;
+        }
+        return second;
     }
 
 }
