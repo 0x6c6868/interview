@@ -2,15 +2,15 @@ package CodingInterviews;
 
 public class _27_1_MirrorOfBinaryTree {
 
-    public void mirror(TreeNode root) {
+    public void Mirror(TreeNode root) {
         if (root == null) return;
 
-        TreeNode tmp = root.left;
+        TreeNode swap = root.left;
         root.left = root.right;
-        root.right = tmp;
+        root.right = swap;
 
-        mirror(root.left);
-        mirror(root.right);
+        Mirror(root.left);
+        Mirror(root.right);
     }
 
 }

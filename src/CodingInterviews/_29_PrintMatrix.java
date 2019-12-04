@@ -3,57 +3,31 @@ package CodingInterviews;
 import java.util.ArrayList;
 
 public class _29_PrintMatrix {
-
-    static ArrayList<Integer> printMatrix(int[][] matrix) {
+    public ArrayList<Integer> printMatrix(int[][] matrix) {
         if (matrix == null) return null;
 
-        ArrayList<Integer> rst = new ArrayList<>();
+        int rows = matrix.length;
+        int cols = matrix[0].length;
 
-        int x_end = matrix.length;
-        int y_end = matrix[0].length;
-        int x_start = 0;
-        int y_start = 0;
-
-        int x = 0;
-        int y = 0;
-        while (x_start <= x_end && y_start <= y_end) {
-
-            // 左到右
-            while (x >= x_start && x < x_end && y >= y_start && y < y_end) {
-                rst.add(matrix[x][y]);
-                y++;
-            }
-            x++;
-            y--;
-            x_start++;
-
-            // 上到下
-            while (x >= x_start && x < x_end && y >= y_start && y < y_end) {
-                rst.add(matrix[x][y]);
-                x++;
-            }
-            x--;
-            y--;
-            y_end--;
-
-            // 右到左
-            while (x >= x_start && x < x_end && y >= y_start && y < y_end) {
-                rst.add(matrix[x][y]);
-                y--;
-            }
-            x--;
-            y++;
-            x_end--;
-
-            // 下到上
-            while (x >= x_start && x < x_end && y >= y_start && y < y_end) {
-                rst.add(matrix[x][y]);
-                x--;
-            }
-            x++;
-            y++;
-            y_start++;
+        ArrayList<Integer> rst = new ArrayList();
+        for (int i = 0; i < rows && i < cols; i++) {
+            ArrayList<Integer> tmpList = Core(matrix, i, rows - 1 - i, i, cols - 1 - i);
+            if (tmpList == null) break;
+            rst.addAll(tmpList);
         }
+        return rst;
+    }
+
+    private ArrayList<Integer> Core(int[][] a, int i, int j, int x, int y) {
+        ArrayList<Integer> rst = new ArrayList();
+        if (i > j || x > y) return null;
+
+        for (int t = x; t <= y; t++) rst.add(a[i][t]);
+        for (int t = i + 1; t <= j; t++) rst.add(a[t][y]);
+        if (i < j)
+            for (int t = y - 1; t >= x; t--) rst.add(a[j][t]);
+        if (x < y)
+            for (int t = j - 1; t > i; t--) rst.add(a[t][x]);
         return rst;
     }
 

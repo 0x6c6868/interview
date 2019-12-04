@@ -4,35 +4,36 @@ import java.util.Stack;
 
 public class _31_StackPushPopOrder {
 
-    public boolean isPopOrder(int[] pushA, int[] popA) {
-        if (pushA == null && popA == null) return true;
+    public boolean IsPopOrder(int[] pushA, int[] popA) {
         if (pushA == null || popA == null) return false;
-
         if (pushA.length != popA.length) return false;
 
-        Stack<Integer> stack = new Stack();
-
-        int i = 0;
+        Stack<Integer> s = new Stack<Integer>();
         int j = 0;
-        while (i < pushA.length || j < popA.length) {
-            if (i < pushA.length && j < popA.length && pushA[i] == popA[j]) {
+        for (int i = 0; i < pushA.length; ) {
+            if (pushA[i] == popA[j]) {
                 i++;
                 j++;
                 continue;
             }
-
-            if (j < popA.length && !stack.isEmpty() && stack.peek() == popA[j]) {
-                stack.pop();
+            if (!s.isEmpty() && s.lastElement() == popA[j]) {
+                s.pop();
                 j++;
                 continue;
             }
-
-            if (i == pushA.length) return false;
-
-            stack.push(pushA[i]);
+            s.push(pushA[i]);
             i++;
         }
-        return true;
+
+        while (!s.isEmpty()) {
+            if (s.pop() == popA[j]) {
+                j++;
+                continue;
+            }
+        }
+
+        if (s.isEmpty() && j == popA.length) return true;
+        return false;
     }
 
 }
