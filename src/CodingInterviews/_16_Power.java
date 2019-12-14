@@ -2,25 +2,15 @@ package CodingInterviews;
 
 public class _16_Power {
 
-    public double Power(double base, int exponent) {
-        if (exponent == 0) return 1;
+  public double Power(double base, int exponent) {
 
-        boolean flag = false;
-        if (exponent < 0) {
-            flag = true;
-            exponent = -exponent;
-        }
-        double rst = PowerCore(base, exponent);
-        return flag ? 1 / rst : rst;
+    int realExponent = Math.abs(exponent);
+    double res = 1;
+    while (realExponent > 0) {
+      if ((realExponent & 1) == 1) res *= base;
+      base *= base;
+      realExponent >>= 1;
     }
-
-    private double PowerCore(double base, int exponent) {
-        if (exponent == 0) return 1;
-        if (exponent % 2 == 1) {
-            return PowerCore(base, exponent - 1) * base;
-        } else {
-            return PowerCore(base, exponent / 2) * PowerCore(base, exponent / 2);
-        }
-    }
-
+    return exponent < 0 ? 1 / res : res;
+  }
 }
