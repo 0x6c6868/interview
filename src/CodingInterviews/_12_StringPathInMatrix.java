@@ -2,36 +2,44 @@ package CodingInterviews;
 
 public class _12_StringPathInMatrix {
 
-    public boolean hasPath(char[] matrix, int rows, int cols, char[] str) {
-        if (matrix == null || matrix.length == 0
-                || rows <= 0 || cols <= 0
-                || str == null || str.length == 0) return false;
+  private char[] matrix;
+  private int rows;
+  private int cols;
+  private char[] str;
+  private boolean[] visited;
 
-        int[] visited = new int[rows * cols];
+  public boolean hasPath(char[] matrix, int rows, int cols, char[] str) {
+    if (matrix == null
+        || matrix.length == 0
+        || rows <= 0
+        || cols <= 0
+        || str == null
+        || str.length == 0) return false;
 
-        for (int i = 0; i < rows; i++)
-            for (int j = 0; j < cols; j++)
-                if (hasPathCore(matrix, rows, cols, i, j, visited, str, 0)) return true;
+    this.matrix = matrix;
+    this.rows = rows;
+    this.cols = cols;
+    this.str = str;
+    this.visited = new boolean[rows * cols];
 
-        return false;
-    }
+    for (int i = 0; i < rows; i++)
+      for (int j = 0; j < cols; j++) if (hasPathCore(i, j, 0)) return true;
 
-    public boolean hasPathCore(char[] matrix, int rows, int cols, int x, int y,
-                               int[] visited, char[] str, int i) {
-        if (i >= str.length) return true;
-        if (x < 0 || x >= rows || y < 0 || y >= cols) return false;
-        if (visited[x * cols + y] == 1) return false;
-        if (matrix[x * cols + y] != str[i]) return false;
+    return false;
+  }
 
-        visited[x * cols + y] = 1;
-        boolean flag = hasPathCore(matrix, rows, cols, x - 1, y, visited, str, i + 1)
-                || hasPathCore(matrix, rows, cols, x + 1, y, visited, str, i + 1)
-                || hasPathCore(matrix, rows, cols, x, y - 1, visited, str, i + 1)
-                || hasPathCore(matrix, rows, cols, x, y + 1, visited, str, i + 1);
+  public boolean hasPathCore(int x, int y, int i) {
+    if (i >= str.length) return true;
+    if (x < 0 || x >= rows || y < 0 || y >= cols) return false;
+    if (visited[x * cols + y]) return false;
+    if (matrix[x * cols + y] != str[i]) return false;
 
-        if (flag) return true;
-        visited[x * cols + y] = 0;
-        return false;
-    }
-
+    visited[x * cols + y] = true;
+    if (hasPathCore(x - 1, y, i + 1)
+        || hasPathCore(x + 1, y, i + 1)
+        || hasPathCore(x, y - 1, i + 1)
+        || hasPathCore(x, y + 1, i + 1)) return true;
+    visited[x * cols + y] = false;
+    return false;
+  }
 }

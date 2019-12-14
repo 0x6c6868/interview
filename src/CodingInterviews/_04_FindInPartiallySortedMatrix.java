@@ -2,27 +2,24 @@ package CodingInterviews;
 
 public class _04_FindInPartiallySortedMatrix {
 
-    public boolean Find(int target, int[][] array) {
-        if (array == null || array.length == 0) return false;
+  public boolean Find(int target, int[][] array) {
+    if (array == null || array.length == 0) return false;
 
-        int rows = array.length;
-        int cols = array[0].length;
+    int rows = array.length;
+    int cols = array[0].length;
 
-        int x = 0;
-        int y = cols - 1;
+    int x = 0;
+    int y = cols - 1;
 
-        while (x < rows && y >= 0) {
-            int curr = array[x][y];
+    while (x < rows && y >= 0) {
+      int curr = array[x][y];
 
-            if (curr == target) return true;
+      if (curr == target) return true;
 
-            if (curr > target) y--;
-            else x++;
-
-        }
-
-        return false;
-
+      if (curr > target) y--;
+      else x++;
     }
 
+    return false;
+  }
 }

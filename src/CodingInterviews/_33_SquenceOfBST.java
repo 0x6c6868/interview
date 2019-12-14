@@ -1,37 +1,29 @@
 package CodingInterviews;
 
+import java.util.ArrayList;
+
 public class _33_SquenceOfBST {
 
-    public boolean verifySquenceOfBST(int[] sequence) {
+    public boolean VerifySquenceOfBST(int[] sequence) {
         if (sequence == null || sequence.length == 0) return false;
-        return verifySquenceOfBSTCore(sequence, 0, sequence.length - 1);
+        return core(sequence, 0, sequence.length - 1);
     }
 
-    private boolean verifySquenceOfBSTCore(int[] sequence, int start, int end) {
+    public boolean core(int[] array, int start, int end) {
         if (start >= end) return true;
-
-        int leftIndex = start;
-        while (sequence[leftIndex] < sequence[end] && leftIndex <= end) leftIndex++;
-
-        if (leftIndex < end) {
-            for (int i = leftIndex; i <= end; i++) {
-                if (sequence[i] < sequence[end]) {
-                    return false;
-                }
-            }
+        int rootVal = array[end];
+        int index;
+        for (index = start; index <= end; index++) {
+            if (array[index] >= rootVal) break;
         }
 
-        boolean leftFlag = true;
-        if (leftIndex > start) {
-            leftFlag = verifySquenceOfBSTCore(sequence, start, leftIndex - 1);
+        for (int i = index; i <= end; i++) {
+            if (array[i] < rootVal) return false;
         }
 
-        boolean rightFlag = true;
-        if (leftIndex < end) {
-            rightFlag = verifySquenceOfBSTCore(sequence, leftIndex, end - 1);
-        }
-
-        return leftFlag && rightFlag;
+        if (index > start && !core(array, start, index - 1)) return false;
+        if (index < end && !core(array, index, end - 1)) return false;
+        return true;
     }
 
 }

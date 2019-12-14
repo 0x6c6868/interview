@@ -1,43 +1,32 @@
 package CodingInterviews;
 
 import java.util.ArrayList;
-import java.util.List;
+import java.util.stream.Collectors;
 
 public class _34_PathInTree {
 
-    public ArrayList<ArrayList<Integer>> findPath(TreeNode root, int target) {
-        ArrayList<ArrayList<Integer>> rst = new ArrayList<>();
+    public ArrayList<ArrayList<Integer>> FindPath(TreeNode root, int target) {
+        ArrayList<ArrayList<Integer>> rst = new ArrayList();
         if (root == null) return rst;
-
-        List<Integer> path = new ArrayList<>();
-        path.add(root.val);
-        findPathCore(root, target, root.val, path, rst);
-
+        ArrayList<TreeNode> path = new ArrayList();
+        Core(root, target, rst, path, 0);
         return rst;
     }
 
-    private void findPathCore(TreeNode node, int target,
-                              int currSum, List<Integer> path,
-                              ArrayList<ArrayList<Integer>> rst) {
+    public void Core(TreeNode node, int target, ArrayList<ArrayList<Integer>> rst, ArrayList<TreeNode> path, int sum) {
+        path.add(node);
+        sum += node.val;
         if (node.left == null && node.right == null) {
-            if (currSum == target) {
-                ArrayList<Integer> newList = new ArrayList<>(path);
-                rst.add(newList);
+            if (sum == target) {
+                rst.add((ArrayList) path.stream().map(it -> it.val).collect(Collectors.toList()));
             }
-            return;
         }
 
-        if (node.left != null) {
-            path.add(node.left.val);
-            findPathCore(node.left, target, currSum + node.left.val, path, rst);
-            path.remove(path.size() - 1);
-        }
+        if (node.left != null) Core(node.left, target, rst, path, sum);
+        if (node.right != null) Core(node.right, target, rst, path, sum);
 
-        if (node.right != null) {
-            path.add(node.right.val);
-            findPathCore(node.right, target, currSum + node.right.val, path, rst);
-            path.remove(path.size() - 1);
-        }
+        path.remove(path.size() - 1);
+        return;
     }
 
 }

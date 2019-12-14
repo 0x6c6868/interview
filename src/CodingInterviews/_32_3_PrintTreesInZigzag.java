@@ -5,36 +5,33 @@ import java.util.Stack;
 
 public class _32_3_PrintTreesInZigzag {
 
-    static ArrayList<ArrayList<Integer>> print(TreeNode pRoot) {
-        ArrayList<ArrayList<Integer>> rst = new ArrayList<>();
-
+    public ArrayList<ArrayList<Integer>> Print(TreeNode pRoot) {
+        ArrayList<ArrayList<Integer>> rst = new ArrayList();
         if (pRoot == null) return rst;
 
-        Stack<TreeNode> stack1 = new Stack<>();
-        Stack<TreeNode> stack2 = new Stack<>();
-        stack1.push(pRoot);
-        boolean lvl = true;
-        rst.add(new ArrayList());
-        while (!stack1.isEmpty() || !stack2.isEmpty()) {
-            TreeNode node = lvl ? stack1.pop() : stack2.pop();
+        Stack<TreeNode> s1 = new Stack<>();
+        Stack<TreeNode> s2 = new Stack<>();
 
-            rst.get(rst.size() - 1).add(node.val);
-
-            if (lvl) {
-                if (node.left != null) stack2.push(node.left);
-                if (node.right != null) stack2.push(node.right);
-            } else {
-                if (node.right != null) stack1.push(node.right);
-                if (node.left != null) stack1.push(node.left);
+        s1.push(pRoot);
+        while (!s1.isEmpty() || !s2.isEmpty()) {
+            ArrayList<Integer> subRst = new ArrayList();
+            while (!s1.isEmpty()) {
+                TreeNode node = s1.pop();
+                if (node.left != null) s2.push(node.left);
+                if (node.right != null) s2.push(node.right);
+                subRst.add(node.val);
             }
+            if (subRst.size() > 0) rst.add(subRst);
 
-            if ((lvl && stack1.isEmpty() && !stack2.isEmpty()) ||
-                    (!lvl && !stack1.isEmpty() && stack2.isEmpty())) {
-                rst.add(new ArrayList());
-                lvl = !lvl;
+            subRst = new ArrayList();
+            while (!s2.isEmpty()) {
+                TreeNode node = s2.pop();
+                if (node.right != null) s1.push(node.right);
+                if (node.left != null) s1.push(node.left);
+                subRst.add(node.val);
             }
+            if (subRst.size() > 0) rst.add(subRst);
         }
-
         return rst;
     }
 

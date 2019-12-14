@@ -4,20 +4,14 @@ import java.util.ArrayList;
 
 public class _06_PrintListInReversedOrder {
 
-    public ArrayList<Integer> printListFromTailToHead(ListNode listNode) {
-        ArrayList<Integer> rst = new ArrayList<Integer>();
-        if (listNode == null) return rst;
+  private final ArrayList<Integer> rst = new ArrayList<>();
 
-        printCore(listNode, rst);
+  public ArrayList<Integer> printListFromTailToHead(ListNode listNode) {
+    if (listNode == null) return rst;
 
-        return rst;
+    if (listNode.next != null) printListFromTailToHead(listNode.next);
+    rst.add(listNode.val);
 
-    }
-
-    private void printCore(ListNode listNode, ArrayList<Integer> rst) {
-        if (listNode.next != null)
-            printCore(listNode.next, rst);
-        rst.add(listNode.val);
-    }
-
+    return rst;
+  }
 }
