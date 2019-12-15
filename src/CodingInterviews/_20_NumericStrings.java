@@ -1,41 +1,34 @@
 package CodingInterviews;
 
 public class _20_NumericStrings {
+  private int index = 0;
 
-    public boolean isNumeric(char[] str) {
-        if (str == null) return false;
+  public boolean isNumeric(char[] str) {
+    if (str.length < 1) return false;
 
-        boolean numeric = false;
-        int index = scanInteger(str, 0);
-        numeric = index > 0;
+    boolean flag = scanInteger(str);
 
-        if (index < str.length && str[index] == '.') {
-            int tmpIndex = index + 1;
-            index = scanUnsignedInteger(str, tmpIndex);
-            numeric = numeric || index > tmpIndex;
-        }
-
-        if (index < str.length && (str[index] == 'e' || str[index] == 'E')) {
-            int tmpIndex = index + 1;
-            if (tmpIndex < str.length) {
-                index = scanInteger(str, tmpIndex);
-                numeric = numeric && index > tmpIndex;
-            }
-        }
-
-        return numeric && index == str.length;
+    if (index < str.length && str[index] == '.') {
+      index++;
+      flag = scanUnsignedInteger(str) || flag;
     }
 
-    private int scanUnsignedInteger(char[] str, int index) {
-        while (index < str.length && str[index] >= '0' && str[index] <= '9')
-            index++;
-        return index;
+    if (index < str.length && (str[index] == 'E' || str[index] == 'e')) {
+      index++;
+      flag = flag && scanInteger(str);
     }
 
-    private int scanInteger(char[] str, int index) {
-        if (str[index] == '+' || str[index] == '-')
-            return scanUnsignedInteger(str, index + 1);
-        return scanUnsignedInteger(str, index);
-    }
+    return flag && index == str.length;
+  }
 
+  private boolean scanInteger(char[] str) {
+    if (index < str.length && (str[index] == '+' || str[index] == '-')) index++;
+    return scanUnsignedInteger(str);
+  }
+
+  private boolean scanUnsignedInteger(char[] str) {
+    int start = index;
+    while (index < str.length && str[index] >= '0' && str[index] <= '9') index++;
+    return start < index;
+  }
 }
