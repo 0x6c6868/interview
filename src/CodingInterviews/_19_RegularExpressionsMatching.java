@@ -2,25 +2,21 @@ package CodingInterviews;
 
 public class _19_RegularExpressionsMatching {
 
-    public boolean match(char[] str, char[] pattern) {
-        if (str == null || pattern == null) return false;
-        return matchCore(str, 0, pattern, 0);
-    }
+  public boolean match(char[] str, char[] pattern) {
+    if (str == null || pattern == null) return false;
 
-    private boolean matchCore(char[] s, int i, char[] p, int j) {
-        if (i == s.length && j == s.length) return true;
+    boolean dp[][] = new boolean[str.length + 1][pattern.length + 1];
+    dp[0][0] = true;
+    for (int i = 1; i <= pattern.length; i++) if (pattern[i - 1] == '*') dp[0][i] = dp[0][i - 2];
 
-        if (j < p.length - 1 && p[j + 1] == '*') {
-            if (matchCore(s, i, p, j + 2)) return true;
-            if (i < s.length)
-                return (s[i] == p[j] || p[j] == '.') && matchCore(s, i + 1, p, j);
+    for (int i = 1; i <= str.length; i++)
+      for (int j = 1; j <= pattern.length; j++)
+        if (str[i - 1] == pattern[j - 1] || pattern[j - 1] == '.') dp[i][j] = dp[i - 1][j - 1];
+        else if (pattern[j - 1] == '*') {
+          if (str[i - 1] != pattern[j - 2] && pattern[j - 2] != '.') dp[i][j] = dp[i][j - 2];
+          else dp[i][j] = dp[i - 1][j] || dp[i][j - 1] || dp[i][j - 2];
         }
 
-        if (j < p.length && p[j] == '.') return matchCore(s, i + 1, p, j + 1);
-
-        if (i < s.length && j < p.length && s[i] == p[j]) return matchCore(s, i + 1, p, j + 1);
-
-        return false;
-    }
-
+    return dp[str.length][pattern.length];
+  }
 }
