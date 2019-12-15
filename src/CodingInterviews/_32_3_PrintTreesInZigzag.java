@@ -1,38 +1,41 @@
 package CodingInterviews;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import java.util.Stack;
 
 public class _32_3_PrintTreesInZigzag {
 
-    public ArrayList<ArrayList<Integer>> Print(TreeNode pRoot) {
-        ArrayList<ArrayList<Integer>> rst = new ArrayList();
-        if (pRoot == null) return rst;
+  public ArrayList<ArrayList<Integer>> Print(TreeNode pRoot) {
+    if (pRoot == null) return new ArrayList();
 
-        Stack<TreeNode> s1 = new Stack<>();
-        Stack<TreeNode> s2 = new Stack<>();
+    ArrayList<ArrayList<Integer>> rst = new ArrayList();
 
-        s1.push(pRoot);
-        while (!s1.isEmpty() || !s2.isEmpty()) {
-            ArrayList<Integer> subRst = new ArrayList();
-            while (!s1.isEmpty()) {
-                TreeNode node = s1.pop();
-                if (node.left != null) s2.push(node.left);
-                if (node.right != null) s2.push(node.right);
-                subRst.add(node.val);
-            }
-            if (subRst.size() > 0) rst.add(subRst);
+    List<Stack<TreeNode>> s = Arrays.asList(new Stack<>(), new Stack<>());
+    int curr = 0, next = 1;
+    s.get(curr).push(pRoot);
 
-            subRst = new ArrayList();
-            while (!s2.isEmpty()) {
-                TreeNode node = s2.pop();
-                if (node.right != null) s1.push(node.right);
-                if (node.left != null) s1.push(node.left);
-                subRst.add(node.val);
-            }
-            if (subRst.size() > 0) rst.add(subRst);
-        }
-        return rst;
+    ArrayList<Integer> subRst = new ArrayList();
+    while (!s.get(curr).isEmpty()) {
+      TreeNode node = s.get(curr).pop();
+      subRst.add(node.val);
+
+      if (curr == 0) {
+        if (node.left != null) s.get(next).push(node.left);
+        if (node.right != null) s.get(next).push(node.right);
+      } else {
+        if (node.right != null) s.get(next).push(node.right);
+        if (node.left != null) s.get(next).push(node.left);
+      }
+
+      if (s.get(curr).isEmpty()) {
+        rst.add(subRst);
+        subRst = new ArrayList();
+        curr = 1 - curr;
+        next = 1 - next;
+      }
     }
-
+    return rst;
+  }
 }

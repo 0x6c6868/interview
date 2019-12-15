@@ -4,31 +4,25 @@ import java.util.Stack;
 
 public class _30_MinInStack {
 
-    Stack<Integer> minStack = new Stack<>();
-    Stack<Integer> stack = new Stack<>();
+  private final Stack<Integer> minStack = new Stack<>();
+  private final Stack<Integer> dataStack = new Stack<>();
 
-    public void push(int node) {
-        if (!minStack.isEmpty())
-            if (minStack.lastElement() > node)
-                minStack.push(node);
-            else
-                minStack.push(minStack.lastElement());
-        else
-            minStack.push(node);
-        stack.push(node);
-    }
+  public void push(int node) {
+    dataStack.push(node);
+    if (minStack.isEmpty() || node < minStack.peek()) minStack.push(node);
+    else minStack.push(minStack.peek());
+  }
 
-    public void pop() {
-        minStack.pop();
-        stack.pop();
-    }
+  public void pop() {
+    minStack.pop();
+    dataStack.pop();
+  }
 
-    public int top() {
-        return stack.lastElement();
-    }
+  public int top() {
+    return dataStack.peek();
+  }
 
-    public int min() {
-        return minStack.lastElement();
-    }
-
+  public int min() {
+    return minStack.peek();
+  }
 }

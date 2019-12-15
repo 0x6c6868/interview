@@ -1,32 +1,23 @@
 package CodingInterviews;
 
 import java.util.ArrayList;
-import java.util.stream.Collectors;
 
 public class _34_PathInTree {
 
-    public ArrayList<ArrayList<Integer>> FindPath(TreeNode root, int target) {
-        ArrayList<ArrayList<Integer>> rst = new ArrayList();
-        if (root == null) return rst;
-        ArrayList<TreeNode> path = new ArrayList();
-        Core(root, target, rst, path, 0);
-        return rst;
-    }
+  private final ArrayList<ArrayList<Integer>> res = new ArrayList<>();
+  private final ArrayList<Integer> list = new ArrayList<>();
 
-    public void Core(TreeNode node, int target, ArrayList<ArrayList<Integer>> rst, ArrayList<TreeNode> path, int sum) {
-        path.add(node);
-        sum += node.val;
-        if (node.left == null && node.right == null) {
-            if (sum == target) {
-                rst.add((ArrayList) path.stream().map(it -> it.val).collect(Collectors.toList()));
-            }
-        }
+  public ArrayList<ArrayList<Integer>> FindPath(TreeNode root, int target) {
+    if (root == null) return res;
+    list.add(root.val);
 
-        if (node.left != null) Core(node.left, target, rst, path, sum);
-        if (node.right != null) Core(node.right, target, rst, path, sum);
+    target -= root.val;
+    if (target == 0 && root.left == null && root.right == null) res.add(new ArrayList<>(list));
 
-        path.remove(path.size() - 1);
-        return;
-    }
+    FindPath(root.left, target);
+    FindPath(root.right, target);
+    list.remove(list.size() - 1);
 
+    return res;
+  }
 }
