@@ -5,29 +5,31 @@ import java.util.stream.Collectors;
 
 public class _38_StringPermutation {
 
-    public ArrayList<String> Permutation(String str) {
-        if (str == null || str.length() == 0) return new ArrayList<>();
+  private int strLen = 0;
 
-        ArrayList<String> rst = new ArrayList<>();
-        PermutationCore(str.split(""), 0, str.length() - 1, rst);
+  public ArrayList<String> Permutation(String str) {
+    if (str == null || str.length() == 0) return new ArrayList<>();
+    strLen = str.length();
 
-        return (ArrayList<String>) rst.stream().distinct().sorted().collect(Collectors.toList());
+    ArrayList<String> rst = new ArrayList<>();
+    PermutationCore(str.split(""), 0, rst);
+
+    return (ArrayList<String>) rst.stream().distinct().sorted().collect(Collectors.toList());
+  }
+
+  private void PermutationCore(String[] strList, int index, ArrayList<String> rst) {
+    if (index >= strLen) return;
+    if (index == strLen - 1) rst.add(String.join("", strList));
+
+    for (int curr = index; curr < strLen; curr++) {
+      String tmp = strList[curr];
+      strList[curr] = strList[index];
+      strList[index] = tmp;
+
+      PermutationCore(strList, index + 1, rst);
+
+      strList[index] = strList[curr];
+      strList[curr] = tmp;
     }
-
-    public void PermutationCore(String[] strList, int start, int end,
-                                ArrayList<String> rst) {
-        if (start > end) return;
-        if (start == end) rst.add(String.join("", strList));
-
-        for (int curr = start; curr <= end; curr++) {
-            String tmp = strList[curr];
-            strList[curr] = strList[start];
-            strList[start] = tmp;
-
-            PermutationCore(strList, start + 1, end, rst);
-
-            strList[start] = strList[curr];
-            strList[curr] = tmp;
-        }
-    }
+  }
 }
