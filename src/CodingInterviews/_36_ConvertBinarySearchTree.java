@@ -2,30 +2,27 @@ package CodingInterviews;
 
 public class _36_ConvertBinarySearchTree {
 
-    public TreeNode convert(TreeNode pRootOfTree) {
-        if (pRootOfTree == null) return null;
-        return convertCore(pRootOfTree);
-    }
+  private TreeNode prev = null;
 
-    private TreeNode convertCore(TreeNode node) {
-        TreeNode leftNode = node;
+  public TreeNode Convert(TreeNode pRootOfTree) {
+    if (pRootOfTree == null) return null;
 
-        if (node.left != null) {
-            leftNode = convertCore(node.left);
+    ConvertCore(pRootOfTree);
 
-            TreeNode lastLeftNode = leftNode;
-            while (lastLeftNode.right != null) lastLeftNode = lastLeftNode.right;
+    TreeNode rst = pRootOfTree;
+    while (rst.left != null) rst = rst.left;
+    return rst;
+  }
 
-            lastLeftNode.right = node;
-            node.left = lastLeftNode;
-        }
-        if (node.right != null) {
-            TreeNode rightNode = convertCore(node.right);
+  private void ConvertCore(TreeNode curr) {
+    if (curr == null) return;
 
-            node.right = rightNode;
-            rightNode.left = node;
-        }
-        return leftNode;
-    }
+    ConvertCore(curr.left);
 
+    curr.left = prev;
+    if (prev != null) prev.right = curr;
+    prev = curr;
+
+    ConvertCore(curr.right);
+  }
 }
