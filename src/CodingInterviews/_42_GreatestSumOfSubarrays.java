@@ -2,19 +2,15 @@ package CodingInterviews;
 
 public class _42_GreatestSumOfSubarrays {
 
-    public int FindGreatestSumOfSubArray(int[] array) {
-        if (array == null || array.length == 0) return -1;
+  public int FindGreatestSumOfSubArray(int[] array) {
+    if (array == null || array.length == 0) return -1;
 
-        int currSum = 0;
-        int greatestSum = -1;
-        for (int i = 0; i < array.length; i++) {
-            if (currSum <= 0) currSum = array[i];
-            else currSum += array[i];
-
-            if (greatestSum < currSum) greatestSum = currSum;
-        }
-
-        return greatestSum;
+    int greatestSum = array[0];
+    int currSum = array[0];
+    for (int i = 1; i < array.length; i++) {
+      currSum = Math.max(currSum + array[i], array[i]);
+      greatestSum = Math.max(currSum, greatestSum);
     }
-
+    return greatestSum;
+  }
 }
