@@ -1,50 +1,27 @@
 package CodingInterviews;
 
 import java.util.ArrayList;
+import java.util.PriorityQueue;
+import java.util.stream.Collectors;
 
 public class _40_KLeastNumbers {
-    public ArrayList<Integer> GetLeastNumbers_Solution(int[] input, int k) {
-        if (input == null || input.length == 0 || k <= 0 || k > input.length) return new ArrayList<>();
 
-        int start = 0;
-        int end = input.length - 1;
-        int index = Partition(input, start, end);
-        while (index != k - 1) {
-            if (index > k - 1) {
-                end = index - 1;
-                index = Partition(input, start, end);
-            } else {
-                start = index + 1;
-                index = Partition(input, start, end);
-            }
-        }
+  private PriorityQueue<Integer> maxHeap = new PriorityQueue<>((o1, o2) -> o2 - o1);
 
-        ArrayList<Integer> rst = new ArrayList<>();
-        for (int i = 0; i < k; i++) {
-            rst.add(input[i]);
-        }
-        return rst;
+  public ArrayList<Integer> GetLeastNumbers_Solution(int[] array, int k) {
+    if (array == null || array.length == 0 || k == 0 || k > array.length) return new ArrayList<>();
+
+    for (int i = 0; i < array.length; i++) {
+      if (maxHeap.size() < k) maxHeap.offer(array[i]);
+      else {
+        Integer max = maxHeap.peek();
+        if (array[i] > max) continue;
+
+        maxHeap.poll();
+        maxHeap.offer(array[i]);
+      }
     }
 
-    public int Partition(int[] array, int start, int end) {
-        int small = start - 1;
-        for (int i = start; i < end; i++) {
-            if (array[i] < array[end]) {
-                small++;
-                if (small != i) {
-                    int tmp = array[i];
-                    array[i] = array[small];
-                    array[small] = tmp;
-                }
-            }
-        }
-
-        small++;
-        int tmp = array[end];
-        array[end] = array[small];
-        array[small] = tmp;
-
-        return small;
-    }
-
+    return (ArrayList) maxHeap.stream().collect(Collectors.toList());
+  }
 }
