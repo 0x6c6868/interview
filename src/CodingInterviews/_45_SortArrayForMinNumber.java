@@ -1,26 +1,16 @@
 package CodingInterviews;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Arrays;
+import java.util.stream.Collectors;
 
 public class _45_SortArrayForMinNumber {
 
-    public String PrintMinNumber(int[] numbers) {
-        if (numbers == null || numbers.length < 0) return null;
+  public String PrintMinNumber(int[] numbers) {
+    if (numbers == null || numbers.length < 0) return null;
 
-        List<String> strNumList = new ArrayList<>();
-        for (int i = 0; i < numbers.length; i++) {
-            strNumList.add(String.valueOf(numbers[i]));
-        }
-
-        strNumList.sort((m, n) -> {
-            String mn = m + n;
-            String nm = n + m;
-            return mn.compareTo(nm);
-
-        });
-
-        return String.join("", strNumList);
-    }
-
+    return Arrays.stream(numbers)
+        .mapToObj(String::valueOf)
+        .sorted((m, n) -> (m + n).compareTo(n + m))
+        .collect(Collectors.joining(""));
+  }
 }
