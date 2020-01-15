@@ -1,52 +1,21 @@
 package CodingInterviews;
 
+/** leetcode 3 */
 public class _48_LongestSubstringWithoutDup {
+  public int lengthOfLongestSubstring(String s) {
+    if (s == null || s.length() == 0) return 0;
 
-    public int longestSubstringWithoutDuplication(String str) {
-        if (str == null || str.length() <= 0) return 0;
+    char[] data = s.toCharArray();
+    int[] maxTmp = new int[data.length];
 
-        int[] maxLengthArray = new int[str.length()];
-        maxLengthArray[0] = 1;
-
-        for (int i = 1; i < str.length(); i++) {
-            int distance = getDistance(str, i);
-            if (distance > 0 && distance <= maxLengthArray[i - 1]) {
-                maxLengthArray[i] = distance;
-                continue;
-            }
-            maxLengthArray[i] = maxLengthArray[i - 1] + 1;
-        }
-
-        int max = 0;
-        for (int i = 0; i < maxLengthArray.length; i++) {
-            if (maxLengthArray[i] > max) max = maxLengthArray[i];
-        }
-        return max;
+    int max = 1;
+    maxTmp[0] = 1;
+    for (int i = 1; i < data.length; i++) {
+      for (int j = 1; j <= maxTmp[i - 1]; j++) if (data[i] == data[i - j]) maxTmp[i] = j;
+      if (maxTmp[i] == 0) maxTmp[i] = maxTmp[i - 1] + 1;
+      if (maxTmp[i] > max) max = maxTmp[i];
     }
 
-    private int getDistance(String str, int index) {
-        int currIndex = index - 1;
-        while (currIndex >= 0) {
-            if (str.charAt(currIndex) == str.charAt(index)) {
-                return index - currIndex;
-            }
-            currIndex--;
-        }
-        return -1;
-    }
-
-    public static void main(String[] args) {
-        _48_LongestSubstringWithoutDup processer = new _48_LongestSubstringWithoutDup();
-
-        System.out.println(processer.longestSubstringWithoutDuplication("abcacfrar") == 4);
-        System.out.println(processer.longestSubstringWithoutDuplication("acfrarabc") == 4);
-        System.out.println(processer.longestSubstringWithoutDuplication("arabcacfr") == 4);
-        System.out.println(processer.longestSubstringWithoutDuplication("aaaa") == 1);
-        System.out.println(processer.longestSubstringWithoutDuplication("abcdefg") == 7);
-        System.out.println(processer.longestSubstringWithoutDuplication("aaabbbccc") == 2);
-        System.out.println(processer.longestSubstringWithoutDuplication("abcdcba") == 4);
-        System.out.println(processer.longestSubstringWithoutDuplication("abcdaef") == 6);
-        System.out.println(processer.longestSubstringWithoutDuplication("a") == 1);
-        System.out.println(processer.longestSubstringWithoutDuplication("") == 0);
-    }
+    return max;
+  }
 }
