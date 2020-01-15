@@ -2,37 +2,18 @@ package CodingInterviews;
 
 public class _49_UglyNumber {
 
-    public int GetUglyNumber_Solution(int index) {
-        if (index <= 0) return 0;
+  public int GetUglyNumber_Solution(int index) {
+    if (index < 7) return index;
+    int[] rst = new int[index];
 
-        int[] uglyArray = new int[index];
-        uglyArray[0] = 1;
-        int nextUglyIndex = 1;
-
-        int index2 = 0;
-        int index3 = 0;
-        int index5 = 0;
-
-        while (nextUglyIndex < index) {
-            int nextUglyValue = min(
-                    uglyArray[index2] * 2,
-                    uglyArray[index3] * 3,
-                    uglyArray[index5] * 5
-            );
-            uglyArray[nextUglyIndex] = nextUglyValue;
-
-            while (uglyArray[index2] * 2 <= uglyArray[nextUglyIndex]) index2++;
-            while (uglyArray[index3] * 3 <= uglyArray[nextUglyIndex]) index3++;
-            while (uglyArray[index5] * 5 <= uglyArray[nextUglyIndex]) index5++;
-
-            nextUglyIndex++;
-        }
-        return uglyArray[nextUglyIndex - 1];
+    rst[0] = 1;
+    int index2 = 0, index3 = 0, index5 = 0;
+    for (int i = 1; i < index; i++) {
+      rst[i] = Math.min(rst[index2] * 2, Math.min(rst[index3] * 3, rst[index5] * 5));
+      if (rst[i] == rst[index2] * 2) index2++;
+      if (rst[i] == rst[index3] * 3) index3++;
+      if (rst[i] == rst[index5] * 5) index5++;
     }
-
-    private int min(int val2, int val3, int val5) {
-        int min = val2 > val3 ? val3 : val2;
-        return min > val5 ? val5 : min;
-    }
-
+    return rst[index - 1];
+  }
 }
