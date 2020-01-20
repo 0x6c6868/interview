@@ -2,43 +2,35 @@ package CodingInterviews;
 
 public class _52_FirstCommonNodesInLists {
 
-    public ListNode FindFirstCommonNode(ListNode pHead1, ListNode pHead2) {
-        if (pHead1 == null || pHead2 == null) return null;
+  public ListNode FindFirstCommonNode(ListNode pHead1, ListNode pHead2) {
+    if (pHead1 == null || pHead2 == null) return null;
 
-        int listOneLength = 0;
-        ListNode currNode = pHead1;
-        while (currNode != null) {
-            listOneLength++;
-            currNode = currNode.next;
-        }
+    int listOneLength = getCount(pHead1);
+    int listTwoLength = getCount(pHead2);
 
-        int listTwoLength = 0;
-        currNode = pHead2;
-        while (currNode != null) {
-            listTwoLength++;
-            currNode = currNode.next;
-        }
+    if (listOneLength > listTwoLength) pHead1 = goAhead(pHead1, listOneLength - listTwoLength);
+    else if (listOneLength < listTwoLength) pHead2 = goAhead(pHead2, listTwoLength - listOneLength);
 
-        ListNode currListOne = pHead1;
-        ListNode currListTwo = pHead2;
-
-        if (listOneLength > listTwoLength) {
-            for (int i = 0; i < listOneLength - listTwoLength; i++) {
-                currListOne = currListOne.next;
-            }
-        } else if (listOneLength < listTwoLength) {
-            for (int i = 0; i < listTwoLength - listOneLength; i++) {
-                currListTwo = currListTwo.next;
-            }
-        }
-
-        while (currListOne != null && currListTwo != null) {
-            if (currListOne == currListTwo) return currListOne;
-            currListOne = currListOne.next;
-            currListTwo = currListTwo.next;
-        }
-
-        return null;
+    while (pHead1 != null && pHead2 != null) {
+      if (pHead1 == pHead2) return pHead1;
+      pHead1 = pHead1.next;
+      pHead2 = pHead2.next;
     }
 
+    return null;
+  }
+
+  private int getCount(ListNode currNode) {
+    int len = 0;
+    while (currNode != null) {
+      len++;
+      currNode = currNode.next;
+    }
+    return len;
+  }
+
+  private ListNode goAhead(ListNode currNode, int step) {
+    for (int i = 0; i < step; i++) currNode = currNode.next;
+    return currNode;
+  }
 }
