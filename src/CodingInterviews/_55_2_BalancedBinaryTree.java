@@ -2,41 +2,19 @@ package CodingInterviews;
 
 public class _55_2_BalancedBinaryTree {
 
-    static class Context {
-        boolean isBalanced;
-        int depth;
-    }
+  public boolean IsBalanced_Solution(TreeNode root) {
+    return getDepth(root) != -1;
+  }
 
-    public boolean IsBalanced_Solution(TreeNode root) {
-        if (root == null) return true;
+  private int getDepth(TreeNode root) {
+    if (root == null) return 0;
 
-        Context c = IsBalancedCore(root);
-        return c.isBalanced;
-    }
+    int left = getDepth(root.left);
+    if (left == -1) return -1;
 
-    private Context IsBalancedCore(TreeNode curr) {
-        Context context = new Context();
-        if (curr == null) {
-            context.isBalanced = true;
-            context.depth = 0;
-            return context;
-        }
+    int right = getDepth(root.right);
+    if (right == -1) return -1;
 
-        Context leftContext = IsBalancedCore(curr.left);
-        if (!leftContext.isBalanced) return leftContext;
-
-        Context rightContext = IsBalancedCore(curr.right);
-        if (!rightContext.isBalanced) return rightContext;
-
-        int depthDiff = leftContext.depth - rightContext.depth;
-        if (depthDiff > 1 || depthDiff < -1) {
-            context.isBalanced = false;
-        } else {
-            context.isBalanced = true;
-            context.depth = leftContext.depth > rightContext.depth ?
-                    leftContext.depth + 1 : rightContext.depth + 1;
-        }
-        return context;
-    }
-
+    return Math.abs(left - right) > 1 ? -1 : Math.max(left + 1, right + 1);
+  }
 }
