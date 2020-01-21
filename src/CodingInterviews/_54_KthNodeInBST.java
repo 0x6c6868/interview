@@ -2,28 +2,16 @@ package CodingInterviews;
 
 public class _54_KthNodeInBST {
 
-    private int k;
+  private int index;
 
-    public TreeNode KthNode(TreeNode pRoot, int k) {
-        if (pRoot == null || k <= 0) return null;
+  public TreeNode KthNode(TreeNode pRoot, int k) {
+    if (pRoot == null) return null;
 
-        this.k = k;
+    TreeNode node = KthNode(pRoot.left, k);
+    if (node != null) return node;
 
-        return KthNodeCore(pRoot);
-    }
+    if (++index == k) return pRoot;
 
-    private TreeNode KthNodeCore(TreeNode curr) {
-        if (curr == null || k <= 0) return null;
-
-        TreeNode kNode = KthNodeCore(curr.left);
-        if (kNode != null) return kNode;
-
-        if (curr != null && k == 1) {
-            return curr;
-        }
-        k -= 1;
-
-        return KthNodeCore(curr.right);
-    }
-
+    return KthNode(pRoot.right, k);
+  }
 }
