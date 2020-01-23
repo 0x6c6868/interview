@@ -2,6 +2,7 @@ package CodingInterviews;
 
 import java.util.ArrayList;
 
+// 和为S的两个数字
 public class _57_1_TwoNumbersWithSum {
 
   public ArrayList<Integer> FindNumbersWithSum(int[] array, int sum) {
