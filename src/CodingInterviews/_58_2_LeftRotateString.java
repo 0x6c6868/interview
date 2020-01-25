@@ -1,16 +1,16 @@
 package CodingInterviews;
 
+// 左旋转字符串
 public class _58_2_LeftRotateString {
 
-    public String LeftRotateString(String str, int n) {
-        if (str == null || str.length() == 0) return str;
+  public String LeftRotateString(String str, int n) {
+    if (str == null || str.length() == 0) return str;
 
-        int length = str.length();
-        n = n % length;
+    int length = str.length();
+    n = n % length;
 
-        if (n == 0) return str;
+    if (n == 0) return str;
 
-        return str.substring(n, str.length()) + str.substring(0, n);
-    }
-
+    return str.substring(n, str.length()) + str.substring(0, n);
+  }
 }
