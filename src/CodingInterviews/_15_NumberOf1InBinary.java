@@ -1,5 +1,6 @@
 package CodingInterviews;
 
+// 二进制中1的个数
 public class _15_NumberOf1InBinary {
 
   public int NumberOf1(int n) {

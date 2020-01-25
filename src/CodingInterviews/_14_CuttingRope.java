@@ -1,5 +1,6 @@
 package CodingInterviews;
 
+// 剪绳子
 public class _14_CuttingRope {
 
   public int cutRope(int target) {

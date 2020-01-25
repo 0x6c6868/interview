@@ -1,5 +1,6 @@
 package CodingInterviews;
 
+// 表示数值的字符串
 public class _20_NumericStrings {
   private int index = 0;
 

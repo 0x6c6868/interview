@@ -1,5 +1,6 @@
 package CodingInterviews;
 
+// 删除链表中重复的结点
 public class _18_2_DeleteDuplicatedNode {
 
   public ListNode deleteDuplication(ListNode pHead) {

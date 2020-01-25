@@ -1,6 +1,6 @@
 package CodingInterviews;
 
-/** leetcode 3 */
+// leetcode 3
 public class _48_LongestSubstringWithoutDup {
   public int lengthOfLongestSubstring(String s) {
     if (s == null || s.length() == 0) return 0;

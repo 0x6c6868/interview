@@ -3,6 +3,7 @@ package CodingInterviews;
 import java.util.ArrayList;
 import java.util.stream.Collectors;
 
+// 字符串的排列
 public class _38_StringPermutation {
 
   private int strLen = 0;

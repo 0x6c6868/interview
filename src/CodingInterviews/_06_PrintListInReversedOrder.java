@@ -2,6 +2,7 @@ package CodingInterviews;
 
 import java.util.ArrayList;
 
+// 从尾到头打印链表
 public class _06_PrintListInReversedOrder {
 
   private final ArrayList<Integer> rst = new ArrayList<>();

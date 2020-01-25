@@ -1,5 +1,6 @@
 package CodingInterviews;
 
+// 链表中环的入口结点
 public class _23_EntryNodeInListLoop {
 
   public ListNode EntryNodeOfLoop(ListNode pHead) {

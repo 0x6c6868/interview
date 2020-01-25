@@ -3,6 +3,7 @@ package CodingInterviews;
 import java.util.ArrayList;
 import java.util.List;
 
+// 字符流中第一个不重复的字符
 public class _50_2_FirstCharacterInStream {
 
   private List<Character> data = new ArrayList<>();

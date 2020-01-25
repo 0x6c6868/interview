@@ -2,6 +2,7 @@ package CodingInterviews;
 
 import java.util.Stack;
 
+// 用两个栈实现队列
 public class _09_QueueWithTwoStacks {
   Stack<Integer> stack1 = new Stack<>();
   Stack<Integer> stack2 = new Stack<>();

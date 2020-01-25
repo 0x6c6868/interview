@@ -1,6 +1,6 @@
 package CodingInterviews;
 
-/** leetcode 64 */
+// leetcode 64
 public class _47_MaxValueOfGifts {
 
   public int minPathSum(int[][] grid) {

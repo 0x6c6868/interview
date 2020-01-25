@@ -1,5 +1,6 @@
 package CodingInterviews;
 
+// 数组中出现次数超过一半的数字
 public class _39_MoreThanHalfNumber {
   public int MoreThanHalfNum_Solution(int[] array) {
     if (array == null || array.length == 0) return 0;

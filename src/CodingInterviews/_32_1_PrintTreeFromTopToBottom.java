@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.Queue;
 
+// 从上往下打印二叉树
 public class _32_1_PrintTreeFromTopToBottom {
 
   public ArrayList<Integer> PrintFromTopToBottom(TreeNode root) {

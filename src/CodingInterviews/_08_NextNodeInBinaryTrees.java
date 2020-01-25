@@ -1,5 +1,6 @@
 package CodingInterviews;
 
+// 二叉树的下一个结点
 public class _08_NextNodeInBinaryTrees {
 
   public TreeLinkNode GetNext(TreeLinkNode pNode) {

@@ -1,5 +1,6 @@
 package CodingInterviews;
 
+// 数值的整数次方
 public class _16_Power {
 
   public double Power(double base, int exponent) {

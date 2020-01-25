@@ -2,6 +2,7 @@ package CodingInterviews;
 
 import java.util.Stack;
 
+// 栈的压入、弹出序列
 public class _31_StackPushPopOrder {
 
   public boolean IsPopOrder(int[] pushA, int[] popA) {

@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.PriorityQueue;
 import java.util.stream.Collectors;
 
+// 最小的K个数
 public class _40_KLeastNumbers {
 
   private PriorityQueue<Integer> maxHeap = new PriorityQueue<>((o1, o2) -> o2 - o1);

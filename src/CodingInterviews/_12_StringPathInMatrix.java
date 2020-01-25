@@ -1,5 +1,6 @@
 package CodingInterviews;
 
+// 矩阵中的路径
 public class _12_StringPathInMatrix {
 
   private char[] matrix;

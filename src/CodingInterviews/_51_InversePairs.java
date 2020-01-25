@@ -1,5 +1,6 @@
 package CodingInterviews;
 
+// 数组中的逆序对
 public class _51_InversePairs {
 
   public int InversePairs(int[] array) {

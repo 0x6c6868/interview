@@ -1,5 +1,6 @@
 package CodingInterviews;
 
+// 序列化二叉树
 public class _37_SerializeBinaryTrees {
 
   private int index = -1;

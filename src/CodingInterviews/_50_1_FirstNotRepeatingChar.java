@@ -1,5 +1,6 @@
 package CodingInterviews;
 
+// 第一个只出现一次的字符位置
 public class _50_1_FirstNotRepeatingChar {
 
   public int FirstNotRepeatingChar(String str) {

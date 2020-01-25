@@ -1,5 +1,6 @@
 package CodingInterviews;
 
+// 连续子数组的最大和
 public class _42_GreatestSumOfSubarrays {
 
   public int FindGreatestSumOfSubArray(int[] array) {

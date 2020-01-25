@@ -1,5 +1,6 @@
 package CodingInterviews;
 
+// 反转链表
 public class _24_ReverseList {
 
   public ListNode ReverseList(ListNode head) {

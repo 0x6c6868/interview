@@ -1,5 +1,6 @@
 package CodingInterviews;
 
+// 数组中重复的数字
 public class _03_1_DuplicationInArray {
 
   public boolean duplicate(int numbers[], int length, int[] duplication) {

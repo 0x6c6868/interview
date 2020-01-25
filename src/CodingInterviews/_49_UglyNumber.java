@@ -1,5 +1,6 @@
 package CodingInterviews;
 
+// 丑数
 public class _49_UglyNumber {
 
   public int GetUglyNumber_Solution(int index) {

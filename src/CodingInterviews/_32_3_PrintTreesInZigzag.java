@@ -5,6 +5,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Stack;
 
+// 按之字形顺序打印二叉树
 public class _32_3_PrintTreesInZigzag {
 
   public ArrayList<ArrayList<Integer>> Print(TreeNode pRoot) {

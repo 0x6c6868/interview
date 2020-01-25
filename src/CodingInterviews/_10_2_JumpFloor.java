@@ -1,5 +1,6 @@
 package CodingInterviews;
 
+// 跳台阶
 public class _10_2_JumpFloor {
 
   public int JumpFloor(int target) {

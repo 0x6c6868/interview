@@ -2,6 +2,7 @@ package CodingInterviews;
 
 import java.util.Stack;
 
+// 包含min函数的栈
 public class _30_MinInStack {
 
   private final Stack<Integer> minStack = new Stack<>();

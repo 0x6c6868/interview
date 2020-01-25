@@ -1,5 +1,6 @@
 package CodingInterviews;
 
+// 两个链表的第一个公共结点
 public class _52_FirstCommonNodesInLists {
 
   public ListNode FindFirstCommonNode(ListNode pHead1, ListNode pHead2) {

@@ -1,5 +1,6 @@
 package CodingInterviews;
 
+// 二叉搜索树的后序遍历序列
 public class _33_SquenceOfBST {
 
   public boolean VerifySquenceOfBST(int[] sequence) {

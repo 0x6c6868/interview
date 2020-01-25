@@ -1,5 +1,6 @@
 package CodingInterviews;
 
+// 对称的二叉树
 public class _28_SymmetricalBinaryTree {
 
   boolean isSymmetrical(TreeNode pRoot) {

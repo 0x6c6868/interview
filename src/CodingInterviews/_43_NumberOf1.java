@@ -1,5 +1,6 @@
 package CodingInterviews;
 
+// 整数中1出现的次数
 public class _43_NumberOf1 {
 
   public int NumberOf1Between1AndN_Solution(int n) {

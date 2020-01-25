@@ -1,5 +1,6 @@
 package CodingInterviews;
 
+// 合并两个排序的链表
 public class _25_MergeSortedLists {
 
   public ListNode Merge(ListNode list1, ListNode list2) {

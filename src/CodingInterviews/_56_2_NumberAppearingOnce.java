@@ -1,6 +1,6 @@
 package CodingInterviews;
 
-/** leetcode 137 */
+// leetcode 137
 public class _56_2_NumberAppearingOnce {
 
   public int singleNumber(int[] nums) {

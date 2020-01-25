@@ -1,5 +1,6 @@
 package CodingInterviews;
 
+// 树的子结构
 public class _26_SubstructureInTree {
 
   public boolean HasSubtree(TreeNode root1, TreeNode root2) {
