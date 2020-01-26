@@ -1,28 +1,20 @@
 package CodingInterviews;
 
+// 构建乘积数组
 public class _66_ConstuctArray {
 
-    public int[] multiply(int[] A) {
-        if (A == null || A.length == 0) return null;
+  public int[] multiply(int[] A) {
+    int length = A.length;
+    int[] B = new int[length];
 
-        int[] C = new int[A.length];
-        C[0] = 1;
-        for (int i = 1; i < A.length; i++) {
-            C[i] = A[i - 1] * C[i - 1];
-        }
+    // B[i]=A[0]*A[1]*...*A[i-1]
+    int ret = 1;
+    for (int i = 0; i < length; ret *= A[i++]) B[i] = ret;
 
-        int[] D = new int[A.length];
-        D[A.length - 1] = 1;
-        for (int i = A.length - 2; i >= 0; i--) {
-            D[i] = A[i + 1] * D[i + 1];
-        }
+    // B[i]*=A[i+1]*...*A[n-1]
+    ret = 1;
+    for (int i = length - 1; i >= 0; ret *= A[i--]) B[i] *= ret;
 
-        int[] B = new int[A.length];
-        for (int i = 0; i < A.length; i++) {
-            B[i] = C[i] * D[i];
-        }
-
-        return B;
-    }
-
+    return B;
+  }
 }
