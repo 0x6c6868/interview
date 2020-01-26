@@ -1,18 +1,14 @@
 package CodingInterviews;
 
+// 不用加减乘除做加法
 public class _65_AddTwoNumbers {
 
-    public int Add(int num1, int num2) {
-        int sum, carry;
-
-        do {
-            sum = num1 ^ num2;
-            carry = (num1 & num2) << 1;
-            num1 = sum;
-            num2 = carry;
-        } while (num2 != 0);
-
-        return num1;
+  public int Add(int num1, int num2) {
+    while (num2 != 0) {
+      int temp = num1 ^ num2;
+      num2 = (num1 & num2) << 1;
+      num1 = temp;
     }
-
+    return num1;
+  }
 }
