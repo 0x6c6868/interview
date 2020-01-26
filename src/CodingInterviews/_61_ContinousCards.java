@@ -1,34 +1,24 @@
 package CodingInterviews;
 
-import java.util.Arrays;
+import java.util.HashSet;
 
+// 扑克牌顺子
 public class _61_ContinousCards {
 
-    public boolean isContinuous(int[] numbers) {
-        if (numbers == null || numbers.length == 0) return false;
+  public boolean isContinuous(int[] numbers) {
+    if (numbers.length == 0) return false;
 
-        Arrays.sort(numbers);
+    int max = -1, min = 14;
+    HashSet<Integer> set = new HashSet<>();
 
-        long numOfZero = 0;
-        long numOfGap = 0;
+    for (int a : numbers) {
+      if (!set.add(a) && a != 0) return false;
 
-        for (int i = 0; i < numbers.length; i++) {
-
-            if (numbers[i] == 0) {
-                numOfZero++;
-                continue;
-            }
-
-            if (i != 0 && numbers[i - 1] != 0) {
-                if (numbers[i] == numbers[i - 1]) return false;
-                numOfGap += (numbers[i] - numbers[i - 1]) - 1;
-            }
-        }
-
-        if (numOfZero < numOfGap) {
-            return false;
-        }
-        return true;
+      max = Math.max(max, a);
+      if (a != 0) min = Math.min(min, a);
     }
 
+    if (max - min <= 4) return true;
+    return false;
+  }
 }
