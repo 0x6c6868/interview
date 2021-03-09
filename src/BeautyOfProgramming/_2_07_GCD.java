@@ -1,6 +1,6 @@
 package BeautyOfProgramming;
 
-public class _2_7_GCD {
+public class _2_07_GCD {
     public static void main(String[] args) {
         System.out.print(String.format("gcd:%s", gcd(42, 30)));
     }
